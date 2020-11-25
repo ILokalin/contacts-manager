@@ -1,7 +1,9 @@
+import { AuthForm } from "components/AuthForm";
+
 export const AuthPage = () => {
   return (
-    <div>
-      <h1>Auth</h1>
+    <div className="container">
+      <AuthForm />
     </div>
   );
 };
