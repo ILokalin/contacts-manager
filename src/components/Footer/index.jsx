@@ -1,9 +1,14 @@
 export const Footer = () => {
+  const style = {
+    display: "flex",
+    flexGrow: 1,
+    alignItems: "flex-end",
+    justifyContent: "center",
+  };
+
   return (
-    <div className="d-flex">
-      <footer className="flex-fill">
-        <h5 className="text-center">Ilya Lokalin.</h5>
-      </footer>
-    </div>
+    <footer style={style} className="container">
+      <p className="text-center">Ilya Lokalin.</p>
+    </footer>
   );
 };

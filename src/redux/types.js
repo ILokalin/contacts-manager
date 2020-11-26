@@ -1,2 +1,5 @@
 export const SHOW_ALERT = "ALERT/SHOW_MESSAGE";
 export const REMOVE_ALERT = "ALERT/REMOVE_MESSAGE";
+
+export const TO_REGISTRATION = "AUTH/TO_REGISTRATION";
+export const TO_LOGIN = "AUTH/TO_LOGIN";

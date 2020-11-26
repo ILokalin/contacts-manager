@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { InputField } from "components/InputField";
-import { turnToRegistration } from "redux/actions";
+import { turnToLogin } from "redux/actions";
 
 const formInitialize = {
+  name: "",
   login: "",
   password: "",
+  passwordCheck: "",
 };
 
-export const AuthForm = () => {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState(formInitialize);
 
@@ -19,18 +21,27 @@ export const AuthForm = () => {
     });
   };
 
-  const onRegisterBtnClick = () => {
-    dispatch(turnToRegistration());
+  const onFormSubmit = (evt) => {
+    evt.preventDefault();
+  };
+
+  const onMemberBtnClick = () => {
+    dispatch(turnToLogin());
   };
 
   return (
-    <form>
-      <h3 className="text-center">Contacts Manager</h3>
+    <form onSubmit={onFormSubmit}>
+      <h3 className="text-center">Registration form</h3>
+      <InputField
+        name="name"
+        type="text"
+        label="Username"
+        onInputChange={onInputChange}
+      />
       <InputField
         name="login"
         type="email"
         label="Email address"
-        placeholder="Use email for login"
         onInputChange={onInputChange}
       />
       <InputField
@@ -39,15 +50,22 @@ export const AuthForm = () => {
         label="Password"
         onInputChange={onInputChange}
       />
+      <InputField
+        name="passwordCheck"
+        type="password"
+        label="Repeate password"
+        placeholder="Please input same password"
+        onInputChange={onInputChange}
+      />
       <button
         type="button"
         className="btn btn-link pl-0"
-        onClick={onRegisterBtnClick}
+        onClick={onMemberBtnClick}
       >
-        Don't have login?
+        Do you have login?
       </button>
       <button type="submit" className="btn btn-primary float-right">
-        Login
+        Register
       </button>
     </form>
   );

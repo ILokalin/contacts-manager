@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { Alert } from "components/Alert";
 import { Footer } from "components/Footer";
 import { useRoutes } from "hooks";
-import "./App.css";
 
 const style = {
   height: "100vh",
+  display: "flex",
+  flexDirection: "column",
 };
 
 export function App() {
