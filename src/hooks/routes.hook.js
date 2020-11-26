@@ -5,7 +5,7 @@ import { ContactsPage } from "pages/ContactsPage";
 
 export const useRoutes = (isAuthentication) => {
   return (
-    <div>
+    <>
       {isAuthentication ? (
         <Switch>
           <Route path="/contacts">
@@ -21,6 +21,6 @@ export const useRoutes = (isAuthentication) => {
           <Redirect path="*" to="/" />
         </Switch>
       )}
-    </div>
+    </>
   );
 };

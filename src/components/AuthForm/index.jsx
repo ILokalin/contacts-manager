@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { InputField } from "components/InputField";
 
 const formInitialize = {
   login: "",
   password: "",
 };
+
 export const AuthForm = () => {
   const [form, setForm] = useState(formInitialize);
 
@@ -16,31 +18,23 @@ export const AuthForm = () => {
 
   return (
     <form>
-      <div className="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          name="login"
-          onChange={onInputChange}
-        />
-        <small id="emailHelp" className="form-text text-muted">
-          Use email for login.
-        </small>
-      </div>
-      <div className="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          name="password"
-          onChange={onInputChange}
-        />
-      </div>
-      <button type="submit" className="btn btn-primary">
+      <InputField
+        name="login"
+        type="email"
+        label="Email address"
+        placeholder="Use email for login"
+        onInputChange={onInputChange}
+      />
+      <InputField
+        name="password"
+        type="password"
+        label="Password"
+        onInputChange={onInputChange}
+      />
+      <button type="button" className="btn btn-secondary mr-4">
+        Don't have login?
+      </button>
+      <button type="submit" className="btn btn-primary float-right">
         Login
       </button>
     </form>
