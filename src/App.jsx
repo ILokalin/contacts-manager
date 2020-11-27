@@ -16,7 +16,9 @@ export function App() {
     alert.message,
   ]);
 
-  const routes = useRoutes(false);
+  const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
+
+  const routes = useRoutes(isAuthenticated);
 
   return (
     <div className="container" style={style}>

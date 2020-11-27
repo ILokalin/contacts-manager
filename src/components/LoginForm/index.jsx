@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { InputField } from "components/InputField";
-import { turnToRegistration } from "redux/actions";
+import { turnToRegistration, userLogin } from "redux/actions";
 
-const formInitialize = {
+const formInitial = {
   login: "",
   password: "",
 };
 
-export const AuthForm = () => {
+export const LoginForm = () => {
   const dispatch = useDispatch();
-  const [form, setForm] = useState(formInitialize);
+  const [form, setForm] = useState(formInitial);
 
   const onInputChange = ({ target }) => {
     setForm({
@@ -23,8 +23,13 @@ export const AuthForm = () => {
     dispatch(turnToRegistration());
   };
 
+  const onFormSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(userLogin({ userName: "Messi", userID: "user12345" }));
+  };
+
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <h3 className="text-center">Contacts Manager</h3>
       <InputField
         name="login"

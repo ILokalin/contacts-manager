@@ -1,7 +1,10 @@
+import { AddContactForm } from "components/AddContactForm";
+
 export const ContactsPage = () => {
   return (
     <div>
-      <h1>Contacts</h1>
+      <header>Header</header>
+      <AddContactForm />
     </div>
   );
 };

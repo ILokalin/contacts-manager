@@ -3,3 +3,6 @@ export const REMOVE_ALERT = "ALERT/REMOVE_MESSAGE";
 
 export const TO_REGISTRATION = "AUTH/TO_REGISTRATION";
 export const TO_LOGIN = "AUTH/TO_LOGIN";
+export const USER_LOGIN = "AUTH/USER_LOGIN";
+export const USER_LOGOUT = "AUTH/USER_LOGOUT";
+export const USER_REGISTER = "AUTH/USER_REGISTER";

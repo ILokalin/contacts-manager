@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
-import { AuthForm } from "components/AuthForm";
+import { LoginForm } from "components/LoginForm";
 import { RegisterForm } from "components/RegisterForm";
 
 export const AuthPage = () => {
-  const isRegistration = useSelector(({ auth }) => auth.isRegistration);
+  const isRegistrationProc = useSelector(({ auth }) => auth.isRegistrationProc);
 
   return (
     <div className="row h-75 justify-content-md-center align-items-center">
       <div className="col-6">
-        {isRegistration ? <RegisterForm /> : <AuthForm />}
+        {isRegistrationProc ? <RegisterForm /> : <LoginForm />}
       </div>
     </div>
   );
