@@ -1,18 +1,27 @@
 import { useState } from "react";
 import { InputField } from "components/InputField";
+import { validity } from "utils/validity";
 
 const formInitial = {
-  name: "",
+  name: {
+    value: "",
+    validity: "",
+  },
   phone: "",
 };
 
 export const AddContactForm = () => {
   const [form, setForm] = useState(formInitial);
+  const [castomValiditi, setCastomValidity] = useState("");
 
   const onInputChange = ({ target }) => {
+    validity(target.name, { field: target });
     setForm({
       ...form,
-      [target.name]: target.value,
+      [target.name]: {
+        value: target.value,
+        validity: validity(target.name, { field: target }),
+      },
     });
   };
 
