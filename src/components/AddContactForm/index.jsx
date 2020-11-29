@@ -2,28 +2,30 @@ import { useState } from "react";
 import { InputField } from "components/InputField";
 import { validity } from "utils/validity";
 
+const phonePlaceholder = "Use format: +7(800)-000-00-00";
+
 const formInitial = {
   name: {
     value: "",
-    validity: "",
+    isValidity: false,
   },
-  phone: "",
+  phone: {
+    value: "+ (   )    -  -  ",
+    isValidity: false,
+  },
 };
 
 export const AddContactForm = () => {
-  const [form, setForm] = useState(formInitial);
-  const [castomValiditi, setCastomValidity] = useState("");
+  const [{ name, phone }, setForm] = useState(formInitial);
 
-  const onInputChange = ({ target }) => {
-    validity(target.name, { field: target });
+  const onInputChange = ({ target, nativeEvent }) => {
     setForm({
-      ...form,
-      [target.name]: {
-        value: target.value,
-        validity: validity(target.name, { field: target }),
-      },
+      ...{ name, phone },
+      [target.name]: validity({ target, nativeEvent }),
     });
   };
+
+  const isValidity = name.isValidity && phone.isValidity;
 
   return (
     <form>
@@ -32,16 +34,22 @@ export const AddContactForm = () => {
         name="name"
         type="text"
         label="Name"
+        value={name.value}
         onInputChange={onInputChange}
       />
       <InputField
         name="phone"
         type="text"
         label="Phone"
-        placeholder="Use format: +7 (800)-000-00-00"
+        placeholder={phonePlaceholder}
+        value={phone.value}
         onInputChange={onInputChange}
       />
-      <button type="button" className="btn btn-primary float-right">
+      <button
+        type="button"
+        className="btn btn-primary float-right"
+        disabled={!isValidity}
+      >
         Add
       </button>
     </form>
