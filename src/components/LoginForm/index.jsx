@@ -2,20 +2,27 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { InputField } from "components/InputField";
 import { turnToRegistration, userLogin } from "redux/actions";
+import { validity } from "utils/validity";
 
 const formInitial = {
-  login: "",
-  password: "",
+  login: {
+    value: "",
+    isValidity: "",
+  },
+  password: {
+    value: "",
+    isValidity: "",
+  },
 };
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const [form, setForm] = useState(formInitial);
+  const [{ login, password }, setForm] = useState(formInitial);
 
   const onInputChange = ({ target }) => {
     setForm({
-      ...form,
-      [target.name]: target.value,
+      ...{ login, password },
+      [target.name]: validity({ target }),
     });
   };
 
@@ -28,6 +35,8 @@ export const LoginForm = () => {
     dispatch(userLogin({ userName: "Messi", userID: "user12345" }));
   };
 
+  const isValidity = login.isValidity && password.isValidity;
+
   return (
     <form onSubmit={onFormSubmit}>
       <h3 className="text-center">Contacts Manager</h3>
@@ -36,22 +45,29 @@ export const LoginForm = () => {
         type="email"
         label="Email address"
         placeholder="Use email for login"
+        value={login.value}
         onInputChange={onInputChange}
       />
       <InputField
         name="password"
         type="password"
         label="Password"
+        value={password.value}
         onInputChange={onInputChange}
       />
       <button
         type="button"
         className="btn btn-link pl-0"
+        value={password.value}
         onClick={onRegisterBtnClick}
       >
         Don't have login?
       </button>
-      <button type="submit" className="btn btn-primary float-right">
+      <button
+        type="submit"
+        className="btn btn-primary float-right"
+        disabled={!isValidity}
+      >
         Login
       </button>
     </form>
