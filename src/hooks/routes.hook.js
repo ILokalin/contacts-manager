@@ -1,26 +1,23 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { AuthPage } from "pages/AuthPage";
 import { ContactsPage } from "pages/ContactsPage";
 
 export const useRoutes = (isAuthentication) => {
+  const [path, setPath] = useState("/");
+
+  useEffect(() => {
+    setPath(isAuthentication ? "/contacts" : "/");
+  }, [isAuthentication]);
+
   return (
     <>
-      {isAuthentication ? (
-        <Switch>
-          <Route path="/contacts">
-            <ContactsPage />
-          </Route>
-          <Redirect path="*" to="/contacts" />
-        </Switch>
-      ) : (
-        <Switch>
-          <Route path="/" exact>
-            <AuthPage />
-          </Route>
-          <Redirect path="*" to="/" />
-        </Switch>
-      )}
+      <Switch>
+        <Route path={path} exact>
+          {isAuthentication ? <ContactsPage /> : <AuthPage />}
+        </Route>
+        <Redirect path="*" to={path} />
+      </Switch>
     </>
   );
 };
