@@ -1,37 +1,23 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { InputField } from "components/InputField";
 import { turnToLogin } from "redux/actions";
-import { validity } from "utils/validity";
-
-const formField = {
-  value: "",
-  isValidity: false,
-};
-
-const formInitialize = {
-  name: Object.assign({}, formField),
-  login: Object.assign({}, formField),
-  password: Object.assign({}, formField),
-  passwordCheck: Object.assign({}, formField),
-};
+import { useInput } from "hooks";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
-  const [form, setForm] = useState(formInitialize);
-  const { name, login, password, passwordCheck } = form;
+  const name = useInput("");
+  const login = useInput("");
+  const password = useInput("");
+  const passwordCheck = useInput("");
 
-  const onInputChange = ({ target }) => {
-    const { name } = target;
-    const action = {
-      type: name === "passwordCheck" ? "CHECK" : "CREATE",
-      payload: password.value,
-    };
+  const onPasswordChange = ({ target }) => {
+    password.setAction({ type: "CREATE" });
+    password.onInputChange({ target });
+  };
 
-    setForm({
-      ...form,
-      [target.name]: validity({ target, action }),
-    });
+  const onPasswordCheckChange = ({ target }) => {
+    passwordCheck.setAction({ type: "CHECK", payload: password.value });
+    passwordCheck.onInputChange({ target });
   };
 
   const onFormSubmit = (evt) => {
@@ -50,26 +36,14 @@ export const RegisterForm = () => {
   return (
     <form onSubmit={onFormSubmit}>
       <h3 className="text-center">Registration form</h3>
-      <InputField
-        name="name"
-        type="text"
-        label="Username"
-        value={name.value}
-        onInputChange={onInputChange}
-      />
-      <InputField
-        name="login"
-        type="email"
-        label="Email address"
-        value={login.value}
-        onInputChange={onInputChange}
-      />
+      <InputField name="name" type="text" label="Username" {...name} />
+      <InputField name="login" type="email" label="Email address" {...login} />
       <InputField
         name="password"
         type="password"
         label="Password"
         value={password.value}
-        onInputChange={onInputChange}
+        onInputChange={onPasswordChange}
       />
       <InputField
         name="passwordCheck"
@@ -77,7 +51,7 @@ export const RegisterForm = () => {
         label="Repeate password"
         placeholder="Please input same password"
         value={passwordCheck.value}
-        onInputChange={onInputChange}
+        onInputChange={onPasswordCheckChange}
       />
       <button
         type="button"

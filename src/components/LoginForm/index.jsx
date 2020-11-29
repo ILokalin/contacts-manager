@@ -1,30 +1,18 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useInput } from "hooks";
 import { InputField } from "components/InputField";
 import { turnToRegistration, userLogin } from "redux/actions";
-import { validity } from "utils/validity";
-
-const formInitial = {
-  login: {
-    value: "",
-    isValidity: "",
-  },
-  password: {
-    value: "",
-    isValidity: "",
-  },
-};
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const [{ login, password }, setForm] = useState(formInitial);
+  const login = useInput("");
+  const password = useInput("");
 
-  const onInputChange = ({ target }) => {
-    setForm({
-      ...{ login, password },
-      [target.name]: validity({ target }),
-    });
-  };
+  useEffect(() => {
+    login.setFocus();
+    // eslint-disable-next-line
+  }, []);
 
   const onRegisterBtnClick = () => {
     dispatch(turnToRegistration());
@@ -45,15 +33,15 @@ export const LoginForm = () => {
         type="email"
         label="Email address"
         placeholder="Use email for login"
-        value={login.value}
-        onInputChange={onInputChange}
+        refer={login.refer}
+        {...login}
       />
       <InputField
         name="password"
         type="password"
         label="Password"
-        value={password.value}
-        onInputChange={onInputChange}
+        refer={password.refer}
+        {...password}
       />
       <button
         type="button"
