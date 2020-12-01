@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SearchField } from "components/SearchField";
+import { InputField } from "components/InputField";
 import { useInput } from "hooks";
 
 export const SearchForm = () => {
@@ -12,8 +12,14 @@ export const SearchForm = () => {
   }, []);
 
   return (
-    <form>
-      <SearchField name="search" type="text" label="Search" {...search} />
+    <form className="form-inline">
+      <InputField name="search" type="search" {...search} />
+      <button
+        className="btn btn-outline-primary ml-2 my-2 my-sm-0"
+        type="submit"
+      >
+        Search
+      </button>
     </form>
   );
 };

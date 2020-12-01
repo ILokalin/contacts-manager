@@ -2,7 +2,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Alert } from "components/Alert";
 import { Footer } from "components/Footer";
+import { Navbar } from "components/Navbar";
 import { useRoutes } from "hooks";
+import { visibility } from "utils/visibility";
 
 const style = {
   height: "100vh",
@@ -11,20 +13,21 @@ const style = {
 };
 
 export function App() {
+  const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
+  const routes = useRoutes(isAuthenticated);
   const [isAlert, alertMessage] = useSelector(({ alert }) => [
     alert.isShow,
     alert.message,
   ]);
 
-  const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
-
-  const routes = useRoutes(isAuthenticated);
-
   return (
-    <div className="container" style={style}>
-      {isAlert ? <Alert message={alertMessage} /> : null}
-      <Router>{routes}</Router>
-      <Footer />
-    </div>
+    <>
+      {visibility(isAuthenticated, <Navbar />)}
+      <div className="container" style={style}>
+        {visibility(isAlert, <Alert message={alertMessage} />)}
+        <Router>{routes}</Router>
+        <Footer />
+      </div>
+    </>
   );
 }

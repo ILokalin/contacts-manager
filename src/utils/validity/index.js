@@ -9,6 +9,7 @@ const Handler = {
   login: loginValidity,
   password: passwordValidity,
   passwordCheck: passwordValidity,
+  search: nameValidity,
   default: () => "",
 };
 
