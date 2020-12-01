@@ -4,7 +4,7 @@ import { Alert } from "components/Alert";
 import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
 import { useRoutes } from "hooks";
-import { visibility } from "utils/visibility";
+import { setVisibility } from "utils/setVisibility";
 
 const style = {
   height: "100vh",
@@ -22,9 +22,9 @@ export function App() {
 
   return (
     <>
-      {visibility(isAuthenticated, <Navbar />)}
+      {setVisibility(isAuthenticated, <Navbar />)}
       <div className="container" style={style}>
-        {visibility(isAlert, <Alert message={alertMessage} />)}
+        {setVisibility(isAlert, <Alert message={alertMessage} />)}
         <Router>{routes}</Router>
         <Footer />
       </div>

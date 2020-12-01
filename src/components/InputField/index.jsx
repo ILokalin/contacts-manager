@@ -1,3 +1,5 @@
+import { setVisibility } from "utils/setVisibility";
+
 export const InputField = (props) => {
   const {
     onInputChange,
@@ -11,7 +13,7 @@ export const InputField = (props) => {
 
   return (
     <div className="form-group">
-      <label htmlFor={`${name}-ID`}>{label}</label>
+      {setVisibility(label, <label htmlFor={`${name}-ID`}>{label}</label>)}
       <input
         className="form-control"
         id={`${name}-ID`}
@@ -20,9 +22,10 @@ export const InputField = (props) => {
         ref={refer}
         {...{ type, name, value }}
       />
-      {placeholder ? (
+      {setVisibility(
+        placeholder,
         <small className="form-text text-muted">{placeholder}</small>
-      ) : null}
+      )}
     </div>
   );
 };
