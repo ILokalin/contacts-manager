@@ -21,7 +21,6 @@ export const AddContactForm = () => {
 
   return (
     <form>
-      <h3>Add new contact</h3>
       <InputField name="name" type="text" label="Name" {...name} />
       <InputField
         name="phone"

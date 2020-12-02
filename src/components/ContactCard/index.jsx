@@ -1,8 +1,33 @@
-export const ContactCard = ({ name, phone, id }) => {
+import { useState, useEffect } from "react";
+import { InfoCard } from "components/InfoCard";
+import { EditCard } from "components/EditCard";
+import { setVisibility } from "utils/setVisibility";
+
+export const ContactCard = (props) => {
+  const [isEdit, setIsEdit] = useState(false);
+
+  const onEditButtonClick = () => {
+    setIsEdit((prev) => !prev);
+  };
+
   return (
-    <div>
-      <p>{name}</p>
-      <p>{phone}</p>
+    <div className="d-flex justify-content-between">
+      <div>
+        {setVisibility(
+          isEdit,
+          <EditCard {...props} />,
+          <InfoCard {...props} />
+        )}
+      </div>
+      <div>
+        <button
+          className="btn btn-sm text-muted mr-2"
+          onClick={onEditButtonClick}
+        >
+          &#128393;
+        </button>
+        <button className="btn btn-sm btn-outline-danger">&times;</button>
+      </div>
     </div>
   );
 };

@@ -8,9 +8,14 @@ export const ContactsPage = () => {
   ];
 
   return (
-    <div>
-      <AddContactForm />
-      <ContactsContainer contacts={contacts} />
+    <div className="row">
+      <div className="col-6 pt-5">
+        <h5 className="text-center text-muted">Your list</h5>
+        <ContactsContainer contacts={contacts} />
+      </div>
+      <div className="col-6 pt-5">
+        <AddContactForm />
+      </div>
     </div>
   );
 };
