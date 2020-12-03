@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "666",
+      "logion": "boo@foo.ru",
+      "password": "asd098K%",
+      "name": "Boono"
+    },
+    {
+      "id": "6667",
+      "login": "foo@boo.com",
+      "password": "asd12A#",
+      "name": "Foon Foo"
+    }
+  ]
+}

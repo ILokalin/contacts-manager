@@ -20,7 +20,7 @@ export const LoginForm = () => {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    dispatch(userLogin({ userName: "Messi", userID: "user12345" }));
+    dispatch(userLogin({ login: login.value, password: password.value }));
   };
 
   const isValidity = login.isValidity && password.isValidity;

@@ -7,11 +7,11 @@ import {
 } from "redux/types";
 
 const Handler = {
-  [USER_LOGIN]: (state, { userName, userID }) => ({
+  [USER_LOGIN]: (state, { name, id }) => ({
     ...state,
     isAuthenticated: true,
-    userName,
-    userID,
+    name,
+    id,
   }),
   [USER_LOGOUT]: (state) => ({
     ...state,
@@ -28,8 +28,8 @@ const Handler = {
 const initialState = {
   isRegistrationProc: false,
   isAuthenticated: false,
-  userID: "",
-  userName: "",
+  id: "",
+  name: "",
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
