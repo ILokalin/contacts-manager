@@ -1,2 +1,3 @@
-export { useRoutes } from "hooks/routes.hook";
-export { useInput } from "hooks/input.hook";
+export { useRoutes } from "./routes.hook";
+export { useInput } from "./input.hook";
+export { useStorage } from "./storage";

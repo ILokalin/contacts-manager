@@ -1,10 +1,12 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Alert } from "components/Alert";
 import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
-import { useRoutes } from "hooks";
+import { useRoutes, useStorage } from "hooks";
 import { setVisibility } from "utils/setVisibility";
+import { userLogin } from "redux/actions";
 
 const style = {
   height: "100vh",
@@ -13,12 +15,29 @@ const style = {
 };
 
 export function App() {
-  const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
+  const dispatch = useDispatch();
+  const [isAuthenticated, id] = useSelector(({ auth }) => [
+    auth.isAuthenticated,
+    auth.id,
+  ]);
   const routes = useRoutes(isAuthenticated);
+  const [userId, setUserId] = useStorage("");
   const [isAlert, alertMessage] = useSelector(({ alert }) => [
     alert.isShow,
     alert.message,
   ]);
+
+  useEffect(() => {
+    setUserId(id);
+    // eslint-disable-next-line
+  }, [id]);
+
+  useEffect(() => {
+    if (userId !== id) {
+      dispatch(userLogin(userId));
+    }
+    // eslint-disable-next-line
+  }, [userId]);
 
   return (
     <>
