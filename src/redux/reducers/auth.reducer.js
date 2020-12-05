@@ -1,23 +1,30 @@
 import {
   TO_REGISTRATION,
   TO_LOGIN,
+  GET_AUTHENTICATE,
   USER_LOGIN,
   USER_LOGOUT,
   USER_REGISTER,
 } from "redux/types";
 
 const Handler = {
-  [USER_LOGIN]: (state, { name, id }) => ({
+  [GET_AUTHENTICATE]: (state, { name, id }) => ({
     ...state,
     isAuthenticated: true,
     name,
     id,
   }),
+  [USER_LOGIN]: (state, { name, id }) => ({
+    ...state,
+    isAuthenticated: true,
+    id,
+    name,
+  }),
   [USER_LOGOUT]: (state) => ({
     ...state,
     isAuthenticated: false,
-    userID: "",
-    userName: "",
+    id: "",
+    name: "",
   }),
   [USER_REGISTER]: (state) => ({ ...state, isRegistrationProc: false }),
   [TO_REGISTRATION]: (state) => ({ ...state, isRegistrationProc: true }),

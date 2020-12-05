@@ -12,5 +12,13 @@
       "password": "asd12A#",
       "name": "Foon Foo"
     }
+  ],
+  "contacts": [
+    {
+      "id": "jkjkkjs",
+      "userId": "6667",
+      "name": "William Martini",
+      "phone": "78488849"
+    }
   ]
 }

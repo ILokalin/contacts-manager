@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useInput } from "hooks";
 import { InputField } from "components/InputField";
-import { turnToRegistration, userLogin } from "redux/actions";
+import { turnToRegistration, getAuthenticate } from "redux/actions";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const LoginForm = () => {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    dispatch(userLogin({ login: login.value, password: password.value }));
+    dispatch(getAuthenticate({ login: login.value, password: password.value }));
   };
 
   const isValidity = login.isValidity && password.isValidity;

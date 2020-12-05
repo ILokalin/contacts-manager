@@ -1,5 +1,5 @@
 import axios from "axios";
-import { throwError } from "utils/setError";
+import { throwError } from "utils/throwError";
 
 export const httpFindUser = async (login, password) => {
   try {

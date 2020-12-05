@@ -1,6 +1,9 @@
-export { showAlert, removeAlert } from "redux/actions/alert.action";
+export { showAlert, removeAlert } from "./alert.action";
 export {
   turnToRegistration,
   turnToLogin,
+  getAuthenticate,
   userLogin,
-} from "redux/actions/auth.action";
+  userLogout,
+} from "./auth.action";
+export { loadContactsByUser } from "./http.action";
