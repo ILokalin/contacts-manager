@@ -17,7 +17,8 @@ export const InputField = (props) => {
       <input
         className="form-control"
         id={`${name}-ID`}
-        autoComplete="off"
+        // autoComplete="off"
+        autoComplete="new-password"
         onChange={onInputChange}
         ref={refer}
         {...{ type, name, value }}
