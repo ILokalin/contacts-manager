@@ -11,12 +11,14 @@ const Handler = {
   [GET_AUTHENTICATE]: (state, { name, id }) => ({
     ...state,
     isAuthenticated: true,
+    isRegistrationProc: false,
     name,
     id,
   }),
   [USER_LOGIN]: (state, { name, id }) => ({
     ...state,
     isAuthenticated: true,
+    isRegistrationProc: false,
     id,
     name,
   }),
