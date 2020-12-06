@@ -4,6 +4,7 @@ import { deleteContact } from "redux/actions";
 import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils";
 import { Pencil, Remove, Check } from "icons";
+import "./index.css";
 
 const style = {
   button: {
@@ -49,7 +50,7 @@ export const ContactCard = (props) => {
       <div>
         <button
           style={style.button}
-          className="btn btn-sm text-muted mr-2"
+          className="btn btn-sm text-muted mr-2 edit-button"
           onClick={onEditButtonClick}
         >
           <Pencil />
@@ -66,7 +67,7 @@ export const ContactCard = (props) => {
 
           <button
             style={style.button}
-            className="btn btn-sm text-danger"
+            className="btn btn-sm text-danger remove-button"
             onClick={onRemoveButtonClick}
           >
             <Remove />
