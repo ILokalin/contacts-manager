@@ -6,7 +6,7 @@ export const AuthPage = () => {
 
   return (
     <div className="row h-75 justify-content-md-center align-items-center">
-      <div className="col-6">
+      <div className="container col col-lg-6 col-md-8">
         {isRegistrationProc ? <RegisterForm /> : <LoginForm />}
       </div>
     </div>
