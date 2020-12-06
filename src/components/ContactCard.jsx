@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "redux/actions";
 import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils/setVisibility";
 import { Pencil, Remove, Check } from "icons";
@@ -12,6 +14,7 @@ const style = {
 };
 
 export const ContactCard = (props) => {
+  const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
   const [isCheck, setIsCheck] = useState(false);
 
@@ -26,7 +29,9 @@ export const ContactCard = (props) => {
     setIsEdit((prev) => !prev);
   };
 
-  const onRemoveButtonClick = () => {};
+  const onRemoveButtonClick = () => {
+    dispatch(deleteContact(props.id));
+  };
 
   const onCheckButtonClick = () => {
     setIsCheck(true);

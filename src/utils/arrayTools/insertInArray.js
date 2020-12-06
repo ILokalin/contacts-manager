@@ -1,5 +1,7 @@
+import { compareId } from "./compareId";
+
 export const insertInArray = (contacts, payload) => {
-  const index = contacts.findIndex(({ id }) => id === payload.id);
+  const index = contacts.findIndex(compareId(payload.id));
 
   if (index === -1) {
     return contacts.concat(payload);

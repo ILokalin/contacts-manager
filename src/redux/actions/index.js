@@ -13,4 +13,5 @@ export {
   setFilter,
   getFiltered,
   putContact,
+  deleteContact,
 } from "./http.action";

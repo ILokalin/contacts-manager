@@ -3,8 +3,9 @@ import {
   LOAD_CONTACT_BY_ID,
   SET_FILTER,
   GET_FILTERED,
+  REMOVE_CONTACT,
 } from "redux/types";
-import { insertInArray } from "utils/insertInArray";
+import { insertInArray, removeFromArray } from "utils/arrayTools";
 import { getFilteredContacts } from "utils/getFilteredContacts";
 
 const Handler = {
@@ -20,6 +21,10 @@ const Handler = {
   [LOAD_CONTACT_BY_ID]: (state, payload) => ({
     ...state,
     contacts: insertInArray(state.contacts, payload),
+  }),
+  [REMOVE_CONTACT]: (state, payload) => ({
+    ...state,
+    contacts: removeFromArray(state.contacts, payload),
   }),
   DEFAULT: (state) => state,
 };
