@@ -5,8 +5,7 @@ import {
   GET_FILTERED,
   REMOVE_CONTACT,
 } from "redux/types";
-import { POST, GET, PUT, DELETE } from "utils/http";
-import { http } from "utils/http";
+import { POST, GET, PUT, DELETE, http } from "utils/http";
 import { isActionSuccess } from "utils/isActionSuccess";
 
 export const loadContactsByUser = (id) => {

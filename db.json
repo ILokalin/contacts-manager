@@ -75,12 +75,6 @@
       "id": "Vdf208h"
     },
     {
-      "name": "Baksheev Izmaragd",
-      "phone": "73435444444",
-      "userId": "HulkZ4c",
-      "id": "qq6PP5-"
-    },
-    {
       "name": "Sverbeev Erofeych",
       "phone": "78952255874",
       "id": "FmikVpo",
@@ -117,7 +111,7 @@
       "id": "m8_yxfsdgw"
     },
     {
-      "name": "Nikonova Sarano",
+      "name": "Nikonova Saranoo",
       "phone": "59001231235",
       "id": "iMoIodss7a",
       "userId": "HulkZ4c"
@@ -201,12 +195,6 @@
       "id": "FmikVfewwspo"
     },
     {
-      "name": "Tyutchev Rostislav",
-      "phone": "88888888888",
-      "userId": "HulkZ4c",
-      "id": "N778KFQ"
-    },
-    {
       "name": "Olovennikova Eva",
       "phone": "80054551212",
       "userId": "HulkZ4c",
@@ -217,6 +205,12 @@
       "phone": "79055551115",
       "userId": "HulkZ4c",
       "id": "tHt_c5d"
+    },
+    {
+      "name": "Bogdanova Anatoliya",
+      "phone": "78899622112",
+      "userId": "HulkZ4c",
+      "id": "7dpZTWC"
     }
   ]
 }

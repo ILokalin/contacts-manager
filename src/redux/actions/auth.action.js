@@ -5,20 +5,26 @@ import {
   USER_LOGOUT,
   GET_AUTHENTICATE,
 } from "redux/types";
-import { http } from "utils/http";
+import { POST, GET, http } from "utils/http";
 import { showAlert } from "redux/actions";
 import { throwError } from "utils/throwError";
 import { isActionSuccess } from "utils/isActionSuccess";
 
 export const turnToRegistration = () => ({ type: TO_REGISTRATION });
+
 export const turnToLogin = () => ({ type: TO_LOGIN });
+
+export const userLogout = () => ({
+  type: USER_LOGOUT,
+});
+
 export const getAuthenticate = ({ login, password }) => {
   return async (dispatch) => {
     const stringURN = `users?login=${encodeURIComponent(
       login
     )}&?password=${encodeURIComponent(password)}`;
     try {
-      const response = await http(stringURN);
+      const response = await http(stringURN, GET);
 
       if (isActionSuccess(response, dispatch)) {
         const { data } = response;
@@ -49,7 +55,7 @@ export const userLogin = (id) => {
 
   return async (dispatch) => {
     const stringURN = `users/${id}`;
-    const response = await http(stringURN);
+    const response = await http(stringURN, GET);
 
     if (isActionSuccess(response, dispatch)) {
       dispatch({
@@ -60,17 +66,27 @@ export const userLogin = (id) => {
   };
 };
 
-export const userLogout = () => ({
-  type: USER_LOGOUT,
-});
-
-export const userRegister = (userData) => {
+export const postNewUser = (userData) => {
   return async (dispatch) => {
     const stringURN = "users";
-    const response = await http(stringURN, userData);
+    const response = await http(stringURN, POST, userData);
 
     if (isActionSuccess(response, dispatch)) {
       dispatch(userLogin(response.data.id));
+    }
+  };
+};
+
+export const userRegister = (userData) => {
+  return async (dispatch) => {
+    const stringURN = `users?login=${encodeURIComponent(userData.login)}`;
+    const response = await http(stringURN, GET);
+
+    if (isActionSuccess(response, dispatch)) {
+      if (response.data.length === 0) {
+        return dispatch(postNewUser(userData));
+      }
+      return dispatch(showAlert("User with this email alredy exists."));
     }
   };
 };
