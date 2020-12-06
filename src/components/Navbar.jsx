@@ -26,6 +26,7 @@ export const Navbar = () => {
       <div className="container">
         <div className="d-flex align-items-center">
           <Account />
+          &nbsp;
           <span className="navbar-brand">{userName}</span>
         </div>
         <SearchForm />
