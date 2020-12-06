@@ -4,6 +4,7 @@ import {
   SET_FILTER,
   GET_FILTERED,
 } from "redux/types";
+import { POST, GET, PUT, DELETE } from "utils/http";
 import { showAlert } from "redux/actions";
 import { http } from "utils/http";
 
@@ -42,10 +43,23 @@ export const loadContactById = (id) => {
 
 export const postNewContact = (userId, contact) => {
   return async (dispatch) => {
-    const { isError, message, data } = await http("contacts", {
+    const { isError, message, data } = await http("contacts", POST, {
       ...contact,
       userId,
     });
+
+    if (isError) {
+      dispatch(showAlert(message));
+    } else {
+      dispatch(loadContactById(data.id));
+    }
+  };
+};
+
+export const putContact = (contact) => {
+  const stringURN = `contacts/${contact.id}`;
+  return async (dispatch) => {
+    const { isError, message, data } = await http(stringURN, PUT, contact);
 
     if (isError) {
       dispatch(showAlert(message));

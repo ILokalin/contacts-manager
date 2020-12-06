@@ -12,4 +12,5 @@ export {
   postNewContact,
   setFilter,
   getFiltered,
+  putContact,
 } from "./http.action";
