@@ -1,10 +1,14 @@
 import { useEffect } from "react";
-import { InputField } from "components/InputField";
+import { useSelector, useDispatch } from "react-redux";
 import { useInput } from "hooks";
+import { InputField } from "components/InputField";
+import { postNewContact } from "redux/actions";
 
 const PHONE_PLACEHOLDER = "Use format: +7(800)-000-00-00";
 
 export const AddContactForm = () => {
+  const dispatch = useDispatch();
+  const userId = useSelector(({ auth }) => auth.id);
   const name = useInput("");
   const phone = useInput("+ (   )    -  -  ");
   const isValidity = name.isValidity && phone.isValidity;
@@ -15,8 +19,15 @@ export const AddContactForm = () => {
   }, []);
 
   const clearForm = () => {
-    name.clear();
     phone.clear();
+    name.clear();
+    name.setFocus();
+    dispatch(postNewContact(userId, { name: name.value, phone: phone.value }));
+  };
+
+  const onAddButtonClick = (evt) => {
+    evt.preventDefault();
+    clearForm();
   };
 
   return (
@@ -30,9 +41,9 @@ export const AddContactForm = () => {
         {...phone}
       />
       <button
-        type="button"
+        type="submit"
         className="btn btn-primary float-right"
-        onClick={clearForm}
+        onClick={onAddButtonClick}
         disabled={!isValidity}
       >
         Add

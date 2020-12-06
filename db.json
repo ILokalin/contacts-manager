@@ -11,6 +11,12 @@
       "login": "foo@boo.com",
       "password": "asd12A#",
       "name": "Foon Foo"
+    },
+    {
+      "name": "Nedobrov Petroniy",
+      "login": "Nedobrov@Petroniy.com",
+      "password": "asd12A#",
+      "id": "6jMPe9b"
     }
   ],
   "contacts": [
@@ -18,7 +24,31 @@
       "id": "jkjkkjs",
       "userId": "6667",
       "name": "William Martini",
-      "phone": "78488849"
+      "phone": "+7(912) 123-45-66"
+    },
+    {
+      "name": "Suleshev Vonifatiy",
+      "phone": "+7(912) 222-22-22",
+      "userId": "6jMPe9b",
+      "id": "08k0h41"
+    },
+    {
+      "name": "Buldakov Severian",
+      "phone": "+8(000) 123-45-60",
+      "userId": "6jMPe9b",
+      "id": "tg3mLMQ"
+    },
+    {
+      "name": "Merezhko Gerasim",
+      "phone": "+1(111) 122-22-22",
+      "userId": "6jMPe9b",
+      "id": "m6Z-BhR"
+    },
+    {
+      "name": "Bobylyov Olimpiy",
+      "phone": "+1(750) 555-00-00",
+      "userId": "6jMPe9b",
+      "id": "m8_yxgw"
     }
   ]
 }

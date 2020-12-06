@@ -5,7 +5,7 @@ import {
   USER_LOGOUT,
   GET_AUTHENTICATE,
 } from "redux/types";
-import { httpFindUser, httpLogin } from "utils/http";
+import { httpFindUser, httpLogin, postUser } from "utils/http";
 import { showAlert } from "redux/actions";
 
 export const turnToRegistration = () => ({ type: TO_REGISTRATION });
@@ -48,3 +48,14 @@ export const userLogin = (id) => {
 export const userLogout = () => ({
   type: USER_LOGOUT,
 });
+
+export const userRegister = (userData) => {
+  return async (dispatch) => {
+    const data = await postUser(userData);
+    if (data.isError) {
+      dispatch(showAlert(data.message));
+    } else {
+      dispatch(userLogin(data.id));
+    }
+  };
+};

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { turnToLogin } from "redux/actions";
+import { turnToLogin, userRegister } from "redux/actions";
 import { useInput } from "hooks";
 import { InputField } from "components";
 
@@ -22,6 +22,13 @@ export const RegisterForm = () => {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
+    dispatch(
+      userRegister({
+        name: name.value,
+        login: login.value,
+        password: password.value,
+      })
+    );
   };
 
   const onMemberBtnClick = () => {
