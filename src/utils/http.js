@@ -11,6 +11,6 @@ export const http = async (urn, data = null) => {
     return response;
   } catch (e) {
     e.isError = true;
-    throw e;
+    return e;
   }
 };
