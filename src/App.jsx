@@ -10,6 +10,7 @@ const style = {
   height: "100vh",
   display: "flex",
   flexDirection: "column",
+  paddingTop: "30px",
 };
 
 export function App() {
