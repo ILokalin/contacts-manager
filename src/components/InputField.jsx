@@ -1,5 +1,11 @@
 import { setVisibility } from "utils/setVisibility";
 
+const style = {
+  container: {
+    flexGrow: 1,
+  },
+};
+
 export const InputField = (props) => {
   const {
     onInputChange,
@@ -9,16 +15,18 @@ export const InputField = (props) => {
     refer,
     placeholder,
     value = "",
-    isMarginBottomZerro = false,
+    isSearchMod = false,
   } = props;
 
   return (
-    <div className={`form-group${isMarginBottomZerro ? "mb-0" : ""}`}>
+    <div
+      className={`form-group${isSearchMod ? " mb-0" : ""}`}
+      style={isSearchMod ? style.container : null}
+    >
       {setVisibility(label, <label htmlFor={`${name}-ID`}>{label}</label>)}
       <input
         className="form-control"
         id={`${name}-ID`}
-        // autoComplete="off"
         autoComplete="new-password"
         onChange={onInputChange}
         ref={refer}
