@@ -9,10 +9,11 @@ export const InputField = (props) => {
     refer,
     placeholder,
     value = "",
+    isMarginBottomZerro = false,
   } = props;
 
   return (
-    <div className="form-group">
+    <div className={`form-group${isMarginBottomZerro ? "mb-0" : ""}`}>
       {setVisibility(label, <label htmlFor={`${name}-ID`}>{label}</label>)}
       <input
         className="form-control"

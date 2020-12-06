@@ -3,6 +3,13 @@ import { useDispatch } from "react-redux";
 import { useInput } from "hooks";
 import { InputField } from "components";
 import { setFilter } from "redux/actions";
+import { setVisibility } from "utils/setVisibility";
+
+const style = {
+  form: {
+    flexGrow: 1,
+  },
+};
 
 export const SearchForm = () => {
   const dispatch = useDispatch();
@@ -18,26 +25,16 @@ export const SearchForm = () => {
     dispatch(setFilter(evt.target.value));
   };
 
-  const onFormSubmit = (evt) => {
-    evt.preventDefault();
-    dispatch(setFilter(search.value));
-  };
-
   return (
-    <form className="form-inline" onSubmit={onFormSubmit}>
+    <div style={style.form}>
       <InputField
         name="search"
         type="search"
+        isMarginBottomZerro={true}
         refer={search.refer}
         value={search.value}
         onInputChange={onSearchChange}
       />
-      <button
-        className="btn btn-outline-primary ml-2 my-2 my-sm-0"
-        type="submit"
-      >
-        Search
-      </button>
-    </form>
+    </div>
   );
 };
