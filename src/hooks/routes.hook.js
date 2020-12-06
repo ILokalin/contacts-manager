@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { AuthPage } from "pages/AuthPage";
-import { ContactsPage } from "pages/ContactsPage";
+import { AuthPage, ContactsPage } from "pages";
 import { setVisibility } from "utils";
 
 export const useRoutes = (isAuthentication) => {
