@@ -25,13 +25,13 @@ export const AddContactForm = () => {
     dispatch(postNewContact(userId, { name: name.value, phone: phone.value }));
   };
 
-  const onAddButtonClick = (evt) => {
+  const onFormSubmit = (evt) => {
     evt.preventDefault();
     clearForm();
   };
 
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <InputField name="name" type="text" label="Name" {...name} />
       <InputField
         name="phone"
@@ -43,7 +43,6 @@ export const AddContactForm = () => {
       <button
         type="submit"
         className="btn btn-primary float-right"
-        onClick={onAddButtonClick}
         disabled={!isValidity}
       >
         Add
