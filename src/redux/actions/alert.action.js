@@ -1,5 +1,7 @@
 import { SHOW_ALERT, REMOVE_ALERT } from "redux/types";
 
+let lastTimeout = null;
+
 export const showAlert = (message) => {
   return (dispatch) => {
     dispatch({
@@ -7,7 +9,11 @@ export const showAlert = (message) => {
       payload: message,
     });
 
-    setTimeout(() => {
+    if (lastTimeout) {
+      clearTimeout(lastTimeout);
+    }
+
+    lastTimeout = setTimeout(() => {
       dispatch(removeAlert());
     }, 3000);
   };
