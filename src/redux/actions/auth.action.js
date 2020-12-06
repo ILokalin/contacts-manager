@@ -8,6 +8,7 @@ import {
 import { http } from "utils/http";
 import { showAlert } from "redux/actions";
 import { throwError } from "utils/throwError";
+import { isActionSuccess } from "utils/isActionSuccess";
 
 export const turnToRegistration = () => ({ type: TO_REGISTRATION });
 export const turnToLogin = () => ({ type: TO_LOGIN });
@@ -17,23 +18,22 @@ export const getAuthenticate = ({ login, password }) => {
       login
     )}&?password=${encodeURIComponent(password)}`;
     try {
-      const { isError, message, data } = await http(stringURN);
+      const response = await http(stringURN);
 
-      if (isError) {
-        return dispatch(showAlert(message));
+      if (isActionSuccess(response, dispatch)) {
+        const { data } = response;
+        const { length } = data;
+        if (length === 0) {
+          throwError("User not found or password error", "404");
+        } else if (length > 1) {
+          throwError("The dataBase is corrupted. Call to adminstrator", "417");
+        }
+
+        dispatch({
+          type: GET_AUTHENTICATE,
+          payload: { ...data[0] },
+        });
       }
-
-      const { length } = data;
-      if (length === 0) {
-        throwError("User not found or password error", "404");
-      } else if (length > 1) {
-        throwError("The dataBase is corrupted. Call the adminstration", "417");
-      }
-
-      dispatch({
-        type: GET_AUTHENTICATE,
-        payload: { ...data[0] },
-      });
     } catch (e) {
       dispatch(showAlert(e.message));
     }
@@ -49,14 +49,12 @@ export const userLogin = (id) => {
 
   return async (dispatch) => {
     const stringURN = `users/${id}`;
-    const { isError, message, data } = await http(stringURN);
+    const response = await http(stringURN);
 
-    if (isError) {
-      dispatch(showAlert(message));
-    } else {
+    if (isActionSuccess(response, dispatch)) {
       dispatch({
         type: USER_LOGIN,
-        payload: { ...data },
+        payload: { ...response.data },
       });
     }
   };
@@ -69,11 +67,10 @@ export const userLogout = () => ({
 export const userRegister = (userData) => {
   return async (dispatch) => {
     const stringURN = "users";
-    const { isError, message, data } = await http(stringURN, userData);
-    if (isError) {
-      dispatch(showAlert(message));
-    } else {
-      dispatch(userLogin(data.id));
+    const response = await http(stringURN, userData);
+
+    if (isActionSuccess(response, dispatch)) {
+      dispatch(userLogin(response.data.id));
     }
   };
 };

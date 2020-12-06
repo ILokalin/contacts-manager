@@ -6,28 +6,18 @@ import {
   REMOVE_CONTACT,
 } from "redux/types";
 import { POST, GET, PUT, DELETE } from "utils/http";
-import { showAlert } from "redux/actions";
 import { http } from "utils/http";
-
-const isActionSuccess = (isError, dispatch, message) => {
-  if (isError) {
-    dispatch(showAlert(message));
-    return false;
-  }
-  return true;
-};
+import { isActionSuccess } from "utils/isActionSuccess";
 
 export const loadContactsByUser = (id) => {
   return async (dispatch) => {
     const stringURN = `users/${encodeURIComponent(id)}/contacts`;
-    const { isError, message, data } = await http(stringURN, GET);
+    const response = await http(stringURN, GET);
 
-    if (isError) {
-      dispatch(showAlert(message));
-    } else {
+    if (isActionSuccess(response, dispatch)) {
       dispatch({
         type: LOAD_CONTACTS_BY_USER,
-        payload: data,
+        payload: response.data,
       });
       dispatch(getFiltered());
     }
@@ -36,14 +26,12 @@ export const loadContactsByUser = (id) => {
 
 export const loadContactById = (id) => {
   return async (dispatch) => {
-    const { isError, message, data } = await http(`contacts/${id}`, GET);
+    const response = await http(`contacts/${id}`, GET);
 
-    if (isError) {
-      dispatch(showAlert(message));
-    } else {
+    if (isActionSuccess(response, dispatch)) {
       dispatch({
         type: LOAD_CONTACT_BY_ID,
-        payload: data,
+        payload: response.data,
       });
       dispatch(getFiltered());
     }
@@ -52,15 +40,13 @@ export const loadContactById = (id) => {
 
 export const postNewContact = (userId, contact) => {
   return async (dispatch) => {
-    const { isError, message, data } = await http("contacts", POST, {
+    const response = await http("contacts", POST, {
       ...contact,
       userId,
     });
 
-    if (isError) {
-      dispatch(showAlert(message));
-    } else {
-      dispatch(loadContactById(data.id));
+    if (isActionSuccess(response, dispatch)) {
+      dispatch(loadContactById(response.data.id));
     }
   };
 };
@@ -68,12 +54,10 @@ export const postNewContact = (userId, contact) => {
 export const putContact = (contact) => {
   const stringURN = `contacts/${contact.id}`;
   return async (dispatch) => {
-    const { isError, message, data } = await http(stringURN, PUT, contact);
+    const response = await http(stringURN, PUT, contact);
 
-    if (isError) {
-      dispatch(showAlert(message));
-    } else {
-      dispatch(loadContactById(data.id));
+    if (isActionSuccess(response, dispatch)) {
+      dispatch(loadContactById(response.data.id));
     }
   };
 };
@@ -81,9 +65,9 @@ export const putContact = (contact) => {
 export const deleteContact = (id) => {
   const stringURN = `contacts/${id}`;
   return async (dispatch) => {
-    const { isError, message, data } = await http(stringURN, DELETE);
+    const response = await http(stringURN, DELETE);
 
-    if (isActionSuccess(isError, dispatch, message)) {
+    if (isActionSuccess(response, dispatch)) {
       dispatch({
         type: REMOVE_CONTACT,
         payload: id,
