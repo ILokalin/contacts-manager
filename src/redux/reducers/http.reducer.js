@@ -6,7 +6,7 @@ import {
   REMOVE_CONTACT,
 } from "redux/types";
 import { insertInArray, removeFromArray } from "utils/arrayTools";
-import { getFilteredContacts } from "utils/getFilteredContacts";
+import { getFilteredContacts } from "utils";
 
 const Handler = {
   [SET_FILTER]: (state, payload) => ({ ...state, filterString: payload }),

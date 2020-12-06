@@ -8,7 +8,7 @@ export const Footer = () => {
 
   return (
     <footer style={style} className="container pt-4">
-      <p className="text-center">Ilya Lokalin.</p>
+      <p className="text-center">Ilya Lokalin. 2020</p>
     </footer>
   );
 };

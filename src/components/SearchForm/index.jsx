@@ -4,7 +4,7 @@ import { setFilter } from "redux/actions";
 import { useInput } from "hooks";
 import { InputField } from "components";
 import { Search } from "icons/Search";
-import { setVisibility } from "utils/setVisibility";
+import { setVisibility } from "utils";
 import "./index.css";
 
 const style = {

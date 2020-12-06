@@ -1,4 +1,4 @@
-import { setVisibility } from "utils/setVisibility";
+import { setVisibility } from "utils";
 
 const style = {
   container: {

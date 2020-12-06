@@ -6,7 +6,7 @@ import {
   REMOVE_CONTACT,
 } from "redux/types";
 import { POST, GET, PUT, DELETE, http } from "utils/http";
-import { isActionSuccess } from "utils/isActionSuccess";
+import { isActionSuccess } from "utils";
 
 export const loadContactsByUser = (id) => {
   return async (dispatch) => {

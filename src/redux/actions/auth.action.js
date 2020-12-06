@@ -5,15 +5,12 @@ import {
   USER_LOGOUT,
   GET_AUTHENTICATE,
 } from "redux/types";
+import { showAlert } from "./alert.action";
 import { POST, GET, http } from "utils/http";
-import { showAlert } from "redux/actions";
-import { throwError } from "utils/throwError";
-import { isActionSuccess } from "utils/isActionSuccess";
+import { throwError, isActionSuccess } from "utils";
 
 export const turnToRegistration = () => ({ type: TO_REGISTRATION });
-
 export const turnToLogin = () => ({ type: TO_LOGIN });
-
 export const userLogout = () => ({
   type: USER_LOGOUT,
 });

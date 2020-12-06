@@ -1,5 +1,5 @@
 import axios from "axios";
-import { isSuccess } from "utils/isSuccess";
+import { isSuccess } from "utils";
 
 const URL = "http://localhost:4000/";
 

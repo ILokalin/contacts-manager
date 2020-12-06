@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useInput } from "hooks";
 import { InputField } from "components/InputField";
 import { postNewContact } from "redux/actions";
-import { formatPhoneDigitsOnly } from "utils/formatPhoneDigitsOnly";
+import { formatPhoneDigitsOnly } from "utils";
 import { FORMAT_MASK } from "utils/formatPhoneString";
 
 const PHONE_PLACEHOLDER = "Use format: +7(800) 000-00-00";

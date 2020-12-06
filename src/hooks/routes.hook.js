@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { AuthPage } from "pages/AuthPage";
 import { ContactsPage } from "pages/ContactsPage";
+import { setVisibility } from "utils";
 
 export const useRoutes = (isAuthentication) => {
   const [path, setPath] = useState("/");
@@ -14,7 +15,7 @@ export const useRoutes = (isAuthentication) => {
     <>
       <Switch>
         <Route path={path} exact>
-          {isAuthentication ? <ContactsPage /> : <AuthPage />}
+          {setVisibility(isAuthentication, <ContactsPage />, <AuthPage />)}
         </Route>
         <Redirect path="*" to={path} />
       </Switch>
