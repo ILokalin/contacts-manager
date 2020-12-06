@@ -4,7 +4,7 @@ import { useInput } from "hooks";
 import { InputField } from "components/InputField";
 import { postNewContact } from "redux/actions";
 
-const PHONE_PLACEHOLDER = "Use format: +7(800)-000-00-00";
+const PHONE_PLACEHOLDER = "Use format: +7(800) 000-00-00";
 
 export const AddContactForm = () => {
   const dispatch = useDispatch();

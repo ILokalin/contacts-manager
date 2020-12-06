@@ -1,9 +1,12 @@
+import {
+  formatPhoneString,
+  DIGITS_ORDER_POSITIONS,
+} from "utils/formatPhoneString";
+
 const DELETE_CONTENT_EVENT = "deleteContentBackward";
-const FORMAT_MASK = "+ (   )    -  -  ";
 const MASK_LENGTH = 17;
 const PHONE_DIGITS_LIMIT = 11;
 const START_CURSOR_POSITION = 1;
-const DIGITS_ORDER_POSITIONS = [1, 3, 4, 5, 8, 9, 10, 12, 13, 15, 16];
 const CURSOR_ORDER_POSITIONS = [
   { add: 3, del: 0 },
   { add: 3, del: 1 },
@@ -24,17 +27,6 @@ const CURSOR_ORDER_POSITIONS = [
   { add: 16, del: 16 },
   { add: 17, del: 16 },
 ];
-
-const fillFormat = (string) => {
-  const digits = string.match(/[0-9]/g) || [];
-  const result = FORMAT_MASK.split("");
-
-  digits.forEach((digit, indx) => {
-    result[DIGITS_ORDER_POSITIONS[indx]] = digit;
-  });
-
-  return result.join("");
-};
 
 const deletePreviousDigit = (string, indx) => {
   if (indx === 0) {
@@ -63,7 +55,7 @@ export const phoneValidity = ({ target, nativeEvent }) => {
     }
   }
 
-  value = fillFormat(value);
+  value = formatPhoneString(value);
   selectionStart = selectionStart > MASK_LENGTH ? MASK_LENGTH : selectionStart;
   const digits = value.slice(0, MASK_LENGTH).match(/[0-9]/g) || [];
   const { length: digitsLength } = digits;
