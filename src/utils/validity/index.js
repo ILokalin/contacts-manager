@@ -2,6 +2,7 @@ import { nameValidity } from "./name";
 import { phoneValidity } from "./phone";
 import { passwordValidity } from "./password";
 import { loginValidity } from "./login";
+import { searchValidity } from "./searchValidity";
 
 const Handler = {
   name: nameValidity,
@@ -9,7 +10,7 @@ const Handler = {
   login: loginValidity,
   password: passwordValidity,
   passwordCheck: passwordValidity,
-  search: nameValidity,
+  search: searchValidity,
   default: () => "",
 };
 

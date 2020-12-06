@@ -7,4 +7,9 @@ export {
   userLogout,
   userRegister,
 } from "./auth.action";
-export { loadContactsByUser, postNewContact } from "./http.action";
+export {
+  loadContactsByUser,
+  postNewContact,
+  setFilter,
+  getFiltered,
+} from "./http.action";

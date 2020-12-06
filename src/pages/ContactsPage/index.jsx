@@ -6,7 +6,7 @@ import { AddContactForm, ContactsContainer } from "components";
 export const ContactsPage = () => {
   const dispatch = useDispatch();
   const userId = useSelector(({ auth }) => auth.id);
-  const contacts = useSelector(({ http }) => http.contacts);
+  const filteredContacts = useSelector(({ http }) => http.filteredContacts);
 
   useEffect(() => {
     dispatch(loadContactsByUser(userId));
@@ -17,7 +17,7 @@ export const ContactsPage = () => {
     <div className="row">
       <div className="col-6 pt-5">
         <h5 className="text-center text-muted">Your list</h5>
-        <ContactsContainer contacts={contacts} />
+        <ContactsContainer contacts={filteredContacts} />
       </div>
       <div className="col-6 pt-5">
         <AddContactForm />
