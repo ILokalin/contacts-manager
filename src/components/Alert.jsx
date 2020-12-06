@@ -1,9 +1,16 @@
 import React from "react";
 
+const style = {
+  alert: {
+    position: "absolute",
+  },
+};
+
 export const Alert = ({ message }) => {
   return (
     <div
-      className="alert alert-warning alert-dismissible fade show"
+      style={style.alert}
+      className="alert container alert-warning alert-dismissible fade show"
       role="alert"
     >
       <strong>Warning!</strong>
