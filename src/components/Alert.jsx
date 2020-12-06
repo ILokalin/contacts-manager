@@ -5,6 +5,8 @@ import { removeAlert } from "redux/actions";
 const style = {
   alert: {
     position: "absolute",
+    top: 0,
+    zIndex: 9000,
     left: "50%",
     transform: "translateX(-50%)",
   },
