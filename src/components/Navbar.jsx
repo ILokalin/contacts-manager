@@ -1,7 +1,6 @@
-import { useDispatch } from "react-redux";
-import { SearchForm } from "components/SearchForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "redux/actions";
+import { SearchForm } from "components";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
@@ -10,6 +9,7 @@ export const Navbar = () => {
   const onLogoutClick = () => {
     dispatch(userLogout());
   };
+
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container">

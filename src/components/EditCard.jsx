@@ -1,4 +1,4 @@
-import { InputField } from "components/InputField";
+import { InputField } from "components";
 
 export const EditCard = ({ name, phone }) => {
   return (

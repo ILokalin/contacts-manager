@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { InputField } from "components/InputField";
 import { turnToLogin } from "redux/actions";
 import { useInput } from "hooks";
+import { InputField } from "components";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();

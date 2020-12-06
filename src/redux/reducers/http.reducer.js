@@ -1,7 +1,7 @@
-import { LOAD_CONTACT_BY_USER } from "redux/types";
+import { LOAD_CONTACTS_BY_USER } from "redux/types";
 
 const Handler = {
-  [LOAD_CONTACT_BY_USER]: (state, payload) => ({
+  [LOAD_CONTACTS_BY_USER]: (state, payload) => ({
     ...state,
     contacts: payload.isError ? [] : payload,
   }),

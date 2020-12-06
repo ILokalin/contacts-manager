@@ -6,6 +6,7 @@ export const useInput = (initialValue) => {
     value: initialValue,
     isValidity: false,
   });
+  const { value, isValidity } = inputField;
   const [action, setAction] = useState({});
   const refer = useRef();
 
@@ -20,8 +21,6 @@ export const useInput = (initialValue) => {
   const setFocus = () => {
     refer.current.focus();
   };
-
-  const { value, isValidity } = inputField;
 
   return {
     value,

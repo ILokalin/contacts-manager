@@ -1,12 +1,10 @@
-import { BrowserRouter as Router } from "react-router-dom";
 import { useEffect } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Alert } from "components/Alert";
-import { Footer } from "components/Footer";
-import { Navbar } from "components/Navbar";
-import { useRoutes, useStorage } from "hooks";
-import { setVisibility } from "utils/setVisibility";
 import { userLogin } from "redux/actions";
+import { useRoutes, useStorage } from "hooks";
+import { Alert, Footer, Navbar } from "components";
+import { setVisibility } from "utils/setVisibility";
 
 const style = {
   height: "100vh",

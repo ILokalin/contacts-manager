@@ -1,0 +1,12 @@
+export { AddContactForm } from "./AddContactForm";
+export { InfoCard } from "./InfoCard";
+export { InputField } from "./InputField";
+export { LoginForm } from "./LoginForm";
+export { Navbar } from "./Navbar";
+export { RegisterForm } from "./RegisterForm";
+export { SearchForm } from "./SearchForm";
+export { Footer } from "./Footer";
+export { EditCard } from "./EditCard";
+export { Alert } from "./Alert";
+export { ContactCard } from "./ContactCard";
+export { ContactsContainer } from "./ContactsContainer";

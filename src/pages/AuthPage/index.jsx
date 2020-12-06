@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
-import { LoginForm } from "components/LoginForm";
-import { RegisterForm } from "components/RegisterForm";
+import { LoginForm, RegisterForm } from "components";
 
 export const AuthPage = () => {
   const isRegistrationProc = useSelector(({ auth }) => auth.isRegistrationProc);

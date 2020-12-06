@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-import { InfoCard } from "components/InfoCard";
-import { EditCard } from "components/EditCard";
+import { useState } from "react";
+import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils/setVisibility";
 
 export const ContactCard = (props) => {

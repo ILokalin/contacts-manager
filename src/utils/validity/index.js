@@ -1,7 +1,7 @@
-import { nameValidity } from "utils/validity/name";
-import { phoneValidity } from "utils/validity/phone";
-import { passwordValidity } from "utils/validity/password";
-import { loginValidity } from "utils/validity/login";
+import { nameValidity } from "./name";
+import { phoneValidity } from "./phone";
+import { passwordValidity } from "./password";
+import { loginValidity } from "./login";
 
 const Handler = {
   name: nameValidity,

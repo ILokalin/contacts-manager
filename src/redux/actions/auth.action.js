@@ -13,6 +13,7 @@ export const turnToLogin = () => ({ type: TO_LOGIN });
 export const getAuthenticate = ({ login, password }) => {
   return async (dispatch) => {
     const data = await httpFindUser(login, password);
+
     if (data.isError) {
       dispatch(showAlert(data.message));
     } else {
@@ -30,6 +31,7 @@ export const userLogin = (id) => {
       type: USER_LOGOUT,
     };
   }
+
   return async (dispatch) => {
     const data = await httpLogin(id);
     if (data.isError) {

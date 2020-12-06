@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { InputField } from "components/InputField";
 import { useInput } from "hooks";
 
-const phonePlaceholder = "Use format: +7(800)-000-00-00";
+const PHONE_PLACEHOLDER = "Use format: +7(800)-000-00-00";
 
 export const AddContactForm = () => {
   const name = useInput("");
@@ -26,7 +26,7 @@ export const AddContactForm = () => {
         name="phone"
         type="text"
         label="Phone"
-        placeholder={phonePlaceholder}
+        placeholder={PHONE_PLACEHOLDER}
         {...phone}
       />
       <button

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useInput } from "hooks";
-import { InputField } from "components/InputField";
 import { turnToRegistration, getAuthenticate } from "redux/actions";
+import { useInput } from "hooks";
+import { InputField } from "components";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

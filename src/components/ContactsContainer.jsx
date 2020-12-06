@@ -1,4 +1,4 @@
-import { ContactCard } from "components/ContactCard";
+import { ContactCard } from "components";
 
 export const ContactsContainer = ({ contacts }) => {
   return (

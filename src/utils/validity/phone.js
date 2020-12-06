@@ -36,13 +36,13 @@ const fillFormat = (string) => {
   return result.join("");
 };
 
-const deletePreviusDigit = (string, indx) => {
+const deletePreviousDigit = (string, indx) => {
   if (indx === 0) {
     return [string, indx];
   } else if (/[0-9]/.test(string[indx - 1])) {
     return [string.slice(0, indx - 1) + string.slice(indx), indx];
   }
-  return deletePreviusDigit(string, indx - 1);
+  return deletePreviousDigit(string, indx - 1);
 };
 
 const createCountMessage = (digitsLength) =>
@@ -59,7 +59,7 @@ export const phoneValidity = ({ target, nativeEvent }) => {
 
   if (isDeletedContent && isNothingSelected) {
     if (!/[0-9]/.test(defaultValue[selectionStart])) {
-      [value, selectionStart] = deletePreviusDigit(value, selectionStart);
+      [value, selectionStart] = deletePreviousDigit(value, selectionStart);
     }
   }
 

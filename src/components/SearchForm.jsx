@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { InputField } from "components/InputField";
 import { useInput } from "hooks";
+import { InputField } from "components";
 
 export const SearchForm = () => {
   const search = useInput("");
