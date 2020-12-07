@@ -18,9 +18,9 @@ export const AccountMenu = ({ userName }) => {
 
   return (
     <div className="d-flex flex-column align-items-start pr-2">
-      <botton className="btn" onClick={onAccountButtonClick}>
+      <button className="btn" onClick={onAccountButtonClick}>
         <Account />
-      </botton>
+      </button>
       {setVisibility(
         isOpen,
         <>
