@@ -3,7 +3,7 @@ import { isSuccess } from "utils";
 
 export const http = async (urn, method = "get", data = null) => {
   try {
-    const response = await axios[method](urn, data);
+    const response = await axios[method]("api/" + urn, data);
     isSuccess(response);
     return response;
   } catch (e) {
