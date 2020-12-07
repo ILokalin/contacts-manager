@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "redux/actions";
-import { SearchForm } from "components";
+import { SearchForm, AccountMenu } from "components";
 import { Account } from "icons";
 
 const style = {
@@ -23,11 +23,14 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar navbar-light bg-light" style={style.navbar}>
-      <div className="container">
+      <div className="d-none d-sm-flex container">
         <div className="d-flex align-items-center">
           <Account />
           &nbsp;
-          <span className="navbar-brand">{userName}</span>
+          <span className="d-inline-block d-lg-none px-2">{userName}</span>
+          <span className="d-none d-lg-inline-block navbar-brand">
+            {userName}
+          </span>
         </div>
         <SearchForm />
         <button
@@ -37,6 +40,11 @@ export const Navbar = () => {
         >
           Logout
         </button>
+      </div>
+
+      <div className="d-flex d-sm-none w-100 justify-content-between align-items-start">
+        <AccountMenu userName={userName} />
+        <SearchForm />
       </div>
     </nav>
   );
