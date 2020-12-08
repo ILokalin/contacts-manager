@@ -4,15 +4,14 @@ import { useInput } from "hooks";
 import { InputField } from "components/InputField";
 import { postNewContact } from "redux/actions";
 import { formatPhoneDigitsOnly } from "utils";
-import { FORMAT_MASK } from "utils/formatPhoneString";
 
-const PHONE_PLACEHOLDER = "Use format: +7(800) 000-00-00";
+const PHONE_PLACEHOLDER = 'Use international format with "+"';
 
 export const AddContactForm = () => {
   const dispatch = useDispatch();
   const userId = useSelector(({ auth }) => auth.id);
   const name = useInput("");
-  const phone = useInput(FORMAT_MASK);
+  const phone = useInput("+");
   const isValidity = name.isValidity && phone.isValidity;
 
   useEffect(() => {
@@ -42,7 +41,7 @@ export const AddContactForm = () => {
       <InputField name="name" type="text" label="Name" {...name} />
       <InputField
         name="phone"
-        type="text"
+        type="tel"
         label="Phone"
         placeholder={PHONE_PLACEHOLDER}
         {...phone}

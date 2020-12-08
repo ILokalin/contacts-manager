@@ -1,3 +1,4 @@
 export const formatPhoneDigitsOnly = (phoneString) => {
-  return phoneString.match(/[0-9]/g).join("");
+  const result = phoneString.match(/[0-9]/g) || [];
+  return result.join("");
 };
