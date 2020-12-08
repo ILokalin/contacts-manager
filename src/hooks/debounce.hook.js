@@ -11,7 +11,7 @@ export const useDebounce = (mod) => {
     }
   };
 
-  const status = () => {
+  const checkStatus = () => {
     if (mod === "HOLD" || mod === "LOCK") {
       if (debounce) {
         setDebounce(false);
@@ -34,5 +34,10 @@ export const useDebounce = (mod) => {
     return false;
   };
 
-  return { status, unlock };
+  return {
+    get status() {
+      return checkStatus();
+    },
+    unlock,
+  };
 };

@@ -5,8 +5,9 @@ import { useDebounce } from "hooks";
 import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils";
 import { PencilIcon, RemoveIcon, CheckIcon } from "icons";
-import "./index.css";
 
+const HOLD = "HOLD";
+const LOCK = "LOCK";
 const style = {
   button: {
     padding: 0,
@@ -18,8 +19,8 @@ const style = {
 export const ContactCard = (props) => {
   const dispatch = useDispatch();
   const debounce = useDebounce();
-  const debounceHold = useDebounce("HOLD");
-  const debounceLock = useDebounce("LOCK");
+  const debounceHold = useDebounce(HOLD);
+  const debounceLock = useDebounce(LOCK);
 
   const [isEdit, setIsEdit] = useState(false);
   const [isCheck, setIsCheck] = useState(false);
@@ -39,19 +40,19 @@ export const ContactCard = (props) => {
   }, [isEdit]);
 
   const onEditButtonClick = () => {
-    if (debounce.status()) {
+    if (debounce.status) {
       setIsEdit((prev) => !prev);
     }
   };
 
   const onRemoveButtonClick = () => {
-    if (debounceHold.status()) {
+    if (debounceHold.status) {
       dispatch(deleteContact(props.id));
     }
   };
 
   const onCheckButtonClick = () => {
-    if (debounceLock.status()) {
+    if (debounceLock.status) {
       setIsCheck(true);
     }
   };
