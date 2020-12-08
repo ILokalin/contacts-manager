@@ -8,11 +8,10 @@ import {
   insertInArray,
   removeFromArray,
   sortContactsByName,
+  getFilteredContacts,
 } from "utils/arrayTools";
-import { getFilteredContacts } from "utils";
 
 const Handler = {
-  // [SET_FILTER]: (state, payload) => ({ ...state, filterString: payload }),
   [SET_FILTER]: (state, payload) => ({
     ...state,
     filterString: payload,
