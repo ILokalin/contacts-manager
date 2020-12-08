@@ -3,9 +3,8 @@ import { useDispatch } from "react-redux";
 import { setFilter } from "redux/actions";
 import { useInput } from "hooks";
 import { InputField } from "components";
-import { Search } from "icons/Search";
+import { SearchIcon } from "icons";
 import { setVisibility } from "utils";
-import "./index.css";
 
 const style = {
   form: {
@@ -47,13 +46,11 @@ export const SearchForm = () => {
         />
       )}
       <button
-        className={`btn text-secondary search-button${
-          isSearchLine ? " search-button--active" : ""
-        }`}
+        className="btn text-secondary"
         style={style.button}
         onClick={onSearchButtonClick}
       >
-        <Search />
+        <SearchIcon isRotate={isSearchLine} />
       </button>
     </div>
   );

@@ -1,4 +1,5 @@
-export { Account } from "./Account";
-export { Remove } from "./Remove";
-export { Pencil } from "./Pencil";
-export { Check } from "./Check.jsx";
+export { AccountIcon } from "./AccountIcon";
+export { RemoveIcon } from "./RemoveIcon";
+export { PencilIcon } from "./PencilIcon";
+export { CheckIcon } from "./CheckIcon";
+export { SearchIcon } from "./SearchIcon";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userLogout } from "redux/actions";
-import { Account } from "icons";
+import { AccountIcon } from "icons";
 import { setVisibility } from "utils";
 
 export const AccountMenu = ({ userName }) => {
@@ -19,7 +19,7 @@ export const AccountMenu = ({ userName }) => {
   return (
     <div className="d-flex flex-column align-items-start pr-2">
       <button className="btn" onClick={onAccountButtonClick}>
-        <Account />
+        <AccountIcon />
       </button>
       {setVisibility(
         isOpen,

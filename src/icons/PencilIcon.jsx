@@ -1,4 +1,4 @@
-export const Pencil = () => {
+export const PencilIcon = () => {
   return (
     <svg
       width="1em"

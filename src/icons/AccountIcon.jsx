@@ -1,4 +1,4 @@
-export const Account = () => {
+export const AccountIcon = () => {
   return (
     <svg
       width="1.5em"

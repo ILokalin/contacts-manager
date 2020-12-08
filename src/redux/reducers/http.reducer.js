@@ -2,30 +2,47 @@ import {
   LOAD_CONTACTS_BY_USER,
   LOAD_CONTACT_BY_ID,
   SET_FILTER,
-  GET_FILTERED,
   REMOVE_CONTACT,
 } from "redux/types";
-import { insertInArray, removeFromArray } from "utils/arrayTools";
-import { getFilteredContacts } from "utils";
+import {
+  insertInArray,
+  removeFromArray,
+  sortContactsByName,
+  getFilteredContacts,
+} from "utils/arrayTools";
 
 const Handler = {
-  [SET_FILTER]: (state, payload) => ({ ...state, filterString: payload }),
-  [GET_FILTERED]: (state) => ({
+  [SET_FILTER]: (state, payload) => ({
     ...state,
-    filteredContacts: getFilteredContacts(state),
+    filterString: payload,
+    filteredContacts: getFilteredContacts(state.contacts, state.filterString),
   }),
-  [LOAD_CONTACTS_BY_USER]: (state, payload) => ({
-    ...state,
-    contacts: payload.isError ? [] : payload,
-  }),
-  [LOAD_CONTACT_BY_ID]: (state, payload) => ({
-    ...state,
-    contacts: insertInArray(state.contacts, payload),
-  }),
-  [REMOVE_CONTACT]: (state, payload) => ({
-    ...state,
-    contacts: removeFromArray(state.contacts, payload),
-  }),
+  [LOAD_CONTACTS_BY_USER]: (state, payload) => {
+    const newContacts = sortContactsByName(payload);
+    return {
+      ...state,
+      contacts: newContacts,
+      filteredContacts: getFilteredContacts(newContacts, state.filterString),
+    };
+  },
+  [LOAD_CONTACT_BY_ID]: (state, payload) => {
+    const newContacts = sortContactsByName(
+      insertInArray(state.contacts, payload)
+    );
+    return {
+      ...state,
+      contacts: newContacts,
+      filteredContacts: getFilteredContacts(newContacts, state.filterString),
+    };
+  },
+  [REMOVE_CONTACT]: (state, payload) => {
+    const newContacts = removeFromArray(state.contacts, payload);
+    return {
+      ...state,
+      contacts: newContacts,
+      filteredContacts: getFilteredContacts(newContacts, state.filterString),
+    };
+  },
   DEFAULT: (state) => state,
 };
 

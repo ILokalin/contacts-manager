@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/actions";
 import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils";
-import { Pencil, Remove, Check } from "icons";
+import { PencilIcon, RemoveIcon, CheckIcon } from "icons";
 import "./index.css";
 
 const style = {
@@ -53,7 +53,7 @@ export const ContactCard = (props) => {
           className="btn btn-sm text-muted mr-2 edit-button"
           onClick={onEditButtonClick}
         >
-          <Pencil />
+          <PencilIcon />
         </button>
         {setVisibility(
           isEdit,
@@ -62,7 +62,7 @@ export const ContactCard = (props) => {
             className="btn btn-sm text-danger"
             onClick={onCheckButtonClick}
           >
-            <Check />
+            <CheckIcon />
           </button>,
 
           <button
@@ -70,7 +70,7 @@ export const ContactCard = (props) => {
             className="btn btn-sm text-danger remove-button"
             onClick={onRemoveButtonClick}
           >
-            <Remove />
+            <RemoveIcon />
           </button>
         )}
       </div>
