@@ -5,7 +5,6 @@ import { useInput } from "hooks";
 import { InputField } from "components";
 import { SearchIcon } from "icons";
 import { setVisibility } from "utils";
-import "./index.css";
 
 const style = {
   form: {
@@ -47,13 +46,11 @@ export const SearchForm = () => {
         />
       )}
       <button
-        className={`btn text-secondary search-button${
-          isSearchLine ? " search-button--active" : ""
-        }`}
+        className="btn text-secondary"
         style={style.button}
         onClick={onSearchButtonClick}
       >
-        <SearchIcon />
+        <SearchIcon isRotate={isSearchLine} />
       </button>
     </div>
   );

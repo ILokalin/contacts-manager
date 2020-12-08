@@ -1,6 +1,16 @@
-export const SearchIcon = () => {
+export const SearchIcon = ({ isRotate }) => {
+  const style = {
+    base: {
+      transition: "0.4s",
+    },
+    rotate: {
+      transform: "rotate(90deg)",
+      transition: "0.4s",
+    },
+  };
   return (
     <svg
+      style={isRotate ? style.rotate : style.base}
       width="1em"
       height="1em"
       viewBox="0 0 16 16"
