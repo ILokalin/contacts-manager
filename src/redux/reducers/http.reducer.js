@@ -5,24 +5,24 @@ import {
   REMOVE_CONTACT,
 } from "redux/types";
 import {
+  getFiltered,
   insertInArray,
   removeFromArray,
   sortContactsByName,
-  getFilteredContacts,
 } from "utils/arrayTools";
 
 const Handler = {
   [SET_FILTER]: (state, payload) => ({
     ...state,
     filterString: payload,
-    filteredContacts: getFilteredContacts(state.contacts, state.filterString),
+    filteredContacts: getFiltered(state.contacts, state.filterString),
   }),
   [LOAD_CONTACTS_BY_USER]: (state, payload) => {
     const newContacts = sortContactsByName(payload);
     return {
       ...state,
       contacts: newContacts,
-      filteredContacts: getFilteredContacts(newContacts, state.filterString),
+      filteredContacts: getFiltered(newContacts, state.filterString),
     };
   },
   [LOAD_CONTACT_BY_ID]: (state, payload) => {
@@ -32,7 +32,7 @@ const Handler = {
     return {
       ...state,
       contacts: newContacts,
-      filteredContacts: getFilteredContacts(newContacts, state.filterString),
+      filteredContacts: getFiltered(newContacts, state.filterString),
     };
   },
   [REMOVE_CONTACT]: (state, payload) => {
@@ -40,7 +40,7 @@ const Handler = {
     return {
       ...state,
       contacts: newContacts,
-      filteredContacts: getFilteredContacts(newContacts, state.filterString),
+      filteredContacts: getFiltered(newContacts, state.filterString),
     };
   },
   DEFAULT: (state) => state,

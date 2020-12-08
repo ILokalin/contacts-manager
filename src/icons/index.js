@@ -1,5 +1,5 @@
 export { AccountIcon } from "./AccountIcon";
-export { RemoveIcon } from "./RemoveIcon";
-export { PencilIcon } from "./PencilIcon";
 export { CheckIcon } from "./CheckIcon";
+export { PencilIcon } from "./PencilIcon";
+export { RemoveIcon } from "./RemoveIcon";
 export { SearchIcon } from "./SearchIcon";

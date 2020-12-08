@@ -23,12 +23,12 @@ export const useInput = (initialValue) => {
   };
 
   return {
-    value,
+    clear,
     isValidity,
     onInputChange,
-    clear,
-    setAction,
     refer,
+    setAction,
     setFocus,
+    value,
   };
 };
