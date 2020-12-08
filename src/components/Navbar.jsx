@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "redux/actions";
 import { SearchForm, AccountMenu } from "components";
-import { Account } from "icons";
+import { AccountIcon } from "icons";
 
 const style = {
   navbar: {
@@ -25,7 +25,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-light bg-light" style={style.navbar}>
       <div className="d-none d-sm-flex container">
         <div className="d-flex align-items-center">
-          <Account />
+          <AccountIcon />
           &nbsp;
           <span className="d-inline-block d-lg-none px-2">{userName}</span>
           <span className="d-none d-lg-inline-block navbar-brand">
