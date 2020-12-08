@@ -2,7 +2,6 @@ import {
   LOAD_CONTACTS_BY_USER,
   LOAD_CONTACT_BY_ID,
   SET_FILTER,
-  GET_FILTERED,
   REMOVE_CONTACT,
 } from "redux/types";
 import { POST, GET, PUT, DELETE, http } from "utils/http";
@@ -18,7 +17,6 @@ export const loadContactsByUser = (id) => {
         type: LOAD_CONTACTS_BY_USER,
         payload: response.data,
       });
-      dispatch(getFiltered());
     }
   };
 };
@@ -32,7 +30,6 @@ export const loadContactById = (id) => {
         type: LOAD_CONTACT_BY_ID,
         payload: response.data,
       });
-      dispatch(getFiltered());
     }
   };
 };
@@ -71,21 +68,11 @@ export const deleteContact = (id) => {
         type: REMOVE_CONTACT,
         payload: id,
       });
-      dispatch(getFiltered());
     }
   };
 };
 
-export const setFilter = (filterString) => {
-  return (dispatch) => {
-    dispatch({
-      type: SET_FILTER,
-      payload: filterString,
-    });
-    dispatch(getFiltered());
-  };
-};
-
-export const getFiltered = () => ({
-  type: GET_FILTERED,
+export const setFilter = (filterString) => ({
+  type: SET_FILTER,
+  payload: filterString,
 });

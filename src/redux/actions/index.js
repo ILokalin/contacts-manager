@@ -11,7 +11,6 @@ export {
   loadContactsByUser,
   postNewContact,
   setFilter,
-  getFiltered,
   putContact,
   deleteContact,
 } from "./http.action";

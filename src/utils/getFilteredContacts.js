@@ -1,8 +1,4 @@
-export const getFilteredContacts = ({
-  contacts,
-  filteredContacts,
-  filterString,
-}) => {
+export const getFilteredContacts = (contacts, filterString) => {
   const altFilterString = filterString.replace(/[\W]/, "").toLowerCase();
 
   return contacts.filter(({ phone, name }) =>
