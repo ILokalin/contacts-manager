@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/actions";
+import { useDebounce } from "hooks";
 import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils";
 import { PencilIcon, RemoveIcon, CheckIcon } from "icons";
@@ -16,6 +17,10 @@ const style = {
 
 export const ContactCard = (props) => {
   const dispatch = useDispatch();
+  const debounce = useDebounce();
+  const debounceHold = useDebounce("HOLD");
+  const debounceLock = useDebounce("LOCK");
+
   const [isEdit, setIsEdit] = useState(false);
   const [isCheck, setIsCheck] = useState(false);
 
@@ -26,16 +31,29 @@ export const ContactCard = (props) => {
     }
   }, [isCheck]);
 
+  useEffect(() => {
+    if (!isEdit) {
+      debounceLock.unlock();
+    }
+    // eslint-disable-next-line
+  }, [isEdit]);
+
   const onEditButtonClick = () => {
-    setIsEdit((prev) => !prev);
+    if (debounce.status()) {
+      setIsEdit((prev) => !prev);
+    }
   };
 
   const onRemoveButtonClick = () => {
-    dispatch(deleteContact(props.id));
+    if (debounceHold.status()) {
+      dispatch(deleteContact(props.id));
+    }
   };
 
   const onCheckButtonClick = () => {
-    setIsCheck(true);
+    if (debounceLock.status()) {
+      setIsCheck(true);
+    }
   };
 
   return (
