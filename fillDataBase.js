@@ -1,7 +1,7 @@
 const faker = require("faker");
 const fs = require("fs");
-const MAX_USERS = 10;
-const MAX_CONTACTS = 200;
+const MAX_USERS = 3;
+const MAX_CONTACTS = 90;
 const EASY_PASSWORD = "asd12A#";
 const users = [];
 const contacts = [];
@@ -26,12 +26,7 @@ function fillBase() {
 
 function createUsers() {
   for (let i = 0; i < MAX_USERS; i += 1) {
-    const user = createUser();
-    if (i < 3) {
-      user.password = EASY_PASSWORD;
-      user.login = `test${i + 1}@mail.ru`;
-    }
-    users.push(user);
+    users.push(createUser(i + 1));
   }
 }
 
@@ -41,12 +36,12 @@ function createContacts() {
   }
 }
 
-function createUser() {
+function createUser(indx) {
   return {
     id: faker.random.uuid(),
     name: faker.fake("{{name.lastName}} {{name.firstName}}"),
-    login: faker.internet.email(),
-    password: faker.internet.password(),
+    login: `test${indx}@mail.ru`,
+    password: EASY_PASSWORD,
   };
 }
 
