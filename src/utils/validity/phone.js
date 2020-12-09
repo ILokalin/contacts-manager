@@ -1,27 +1,8 @@
-import { formatPhoneDigitsOnly } from "utils";
-import { formatPhoneNumber } from "./../phoneTools/formatPhoneNumber";
+import { getDigitsOnly } from "utils/phoneTools";
+import { getFormatedNumber } from "utils/phoneTools";
 
 const DELETE_CONTENT_EVENT = "deleteContentBackward";
-// const MaskSelector = {
-//   1: "+9 999 999 9999",
-//   375: "+999 99 999 99 99",
-//   380: "+999 99 999 99 99",
-//   7: "+9 999 999 99 99",
-//   43: "+99 9999 99999",
-//   default: "+9 999 999 9999",
-// };
-
-// const getFormatValue = (mask, digits) => {
-//   return [...MaskSelector[mask]]
-//     .map((maskedChar) => {
-//       if (maskedChar === "9") {
-//         return digits.shift();
-//       }
-//       return maskedChar;
-//     })
-//     .join("")
-//     .trim();
-// };
+const MIN_DIGITS_LENGTH = 10;
 
 const deletePreviousDigit = (string, indx) => {
   if (indx === 0) {
@@ -33,7 +14,7 @@ const deletePreviousDigit = (string, indx) => {
 };
 
 const createCountMessage = (digitsLength, limitLength) =>
-  `Add ${limitLength - digitsLength} more digits of phone.`;
+  `Add ${limitLength - digitsLength} or more digits of phone.`;
 
 export const phoneValidity = ({ target, nativeEvent }) => {
   let { selectionStart, value } = target;
@@ -51,20 +32,18 @@ export const phoneValidity = ({ target, nativeEvent }) => {
     }
   }
 
-  const digitsFromValue = formatPhoneDigitsOnly(value);
+  const digitsFromValue = getDigitsOnly(value);
   const { length: digitsLength } = digitsFromValue;
+  value = getFormatedNumber(digitsFromValue);
 
-  const formatedPhone = formatPhoneNumber(digitsFromValue);
-  value = formatedPhone.getFormatedValue();
-  const limitLength = formatedPhone.getMaskLength();
-  const isDigitsIncomplite = digitsLength < limitLength;
+  const isDigitsIncomplite = digitsLength < MIN_DIGITS_LENGTH;
 
   switch (true) {
     case isLeftCharsContain:
       validityMessage = "Formated input. Use 0-9 digits only.";
       break;
     case isDigitsIncomplite:
-      validityMessage = createCountMessage(digitsLength, limitLength);
+      validityMessage = createCountMessage(digitsLength, MIN_DIGITS_LENGTH);
       break;
     default:
   }
@@ -78,6 +57,6 @@ export const phoneValidity = ({ target, nativeEvent }) => {
 
   return {
     value,
-    isValidity: digitsLength < limitLength ? false : true,
+    isValidity: digitsLength < MIN_DIGITS_LENGTH ? false : true,
   };
 };

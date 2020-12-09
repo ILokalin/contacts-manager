@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useInput } from "hooks";
 import { InputField } from "components/InputField";
 import { postNewContact } from "redux/actions";
-import { formatPhoneDigitsOnly } from "utils";
+import { getDigitsOnly } from "utils/phoneTools";
 
 const PHONE_PLACEHOLDER = 'Use international format with "+"';
 
@@ -26,7 +26,7 @@ export const AddContactForm = () => {
     dispatch(
       postNewContact(userId, {
         name: name.value,
-        phone: formatPhoneDigitsOnly(phone.value),
+        phone: getDigitsOnly(phone.value),
       })
     );
   };

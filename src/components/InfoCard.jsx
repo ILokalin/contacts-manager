@@ -1,11 +1,10 @@
-import { formatPhoneNumber } from "utils/phoneTools/formatPhoneNumber";
+import { getFormatedNumber } from "utils/phoneTools/getFormatedNumber";
 
 export const InfoCard = ({ name, phone = "" }) => {
-  const formatPhone = formatPhoneNumber(phone);
   return (
     <>
       <strong>{name}</strong>
-      <p className="mb-0">{formatPhone.getFormatedValue()}</p>
+      <p className="mb-0">{getFormatedNumber(phone)}</p>
     </>
   );
 };

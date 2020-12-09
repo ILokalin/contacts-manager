@@ -1,4 +1,3 @@
-export { formatPhoneDigitsOnly } from "./formatPhoneDigitsOnly";
 export { isActionSuccess } from "./isActionSuccess";
 export { isSuccess } from "./isSuccess";
 export { setVisibility } from "./setVisibility";

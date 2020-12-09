@@ -4,7 +4,7 @@ import { putContact } from "redux/actions";
 import { useInput } from "hooks";
 import { InputField } from "components";
 import { formatPhoneString } from "utils/formatPhoneString";
-import { formatPhoneDigitsOnly } from "utils";
+import { getDigitsOnly } from "utils/phoneTools";
 
 export const EditCard = ({ name, phone, id, userId, isCheck }) => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const EditCard = ({ name, phone, id, userId, isCheck }) => {
       dispatch(
         putContact({
           name: nameField.value,
-          phone: formatPhoneDigitsOnly(phoneField.value),
+          phone: getDigitsOnly(phoneField.value),
           id,
           userId,
         })
