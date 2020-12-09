@@ -24,7 +24,6 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run react\"",
-    "server-old": "json-server --watch db.json --port 4000",
     "server": "nodemon server.js",
     "react": "react-scripts start",
     "start": "cross-env NODE_ENV=production node server.js",
