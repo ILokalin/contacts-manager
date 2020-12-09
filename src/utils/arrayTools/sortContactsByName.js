@@ -1,3 +1,5 @@
 export const sortContactsByName = (contacts) => {
-  return contacts.sort((a, b) => (a.name > b.name ? 1 : -1));
+  return contacts.sort((a, b) =>
+    a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+  );
 };
