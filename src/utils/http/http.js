@@ -1,5 +1,11 @@
 import axios from "axios";
-import { isSuccess } from "utils";
+import { throwError } from "utils";
+
+const isSuccess = ({ statusText, status }) => {
+  if (status >= 300 || status < 200) {
+    throwError(statusText, status);
+  }
+};
 
 export const http = async (urn, method = "get", data = null) => {
   try {
