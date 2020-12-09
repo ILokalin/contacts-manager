@@ -1,11 +1,22 @@
 export const getFiltered = (contacts, filterString) => {
-  const altFilterString = filterString.replace(/[\W]/, "").toLowerCase();
+  if (filterString === "") {
+    return contacts;
+  }
 
-  return contacts.filter(({ phone, name }) =>
-    [altFilterString, filterString.toLowerCase()].reduce(
-      (state, filter) =>
-        state || phone.includes(filter) || name.toLowerCase().includes(filter),
-      false
-    )
+  const rawWords = filterString.match(/([a-zA-Z]+)/g) || [];
+  const rawDigits = filterString.match(/[0-9]+/g) || [];
+
+  const words =
+    rawWords.filter(Boolean).map((item) => item.toLowerCase()) || [];
+  const digits = rawDigits.filter(Boolean) || [];
+
+  return contacts.filter(
+    ({ phone, name }) =>
+      digits.reduce((state, filter) => state && phone.includes(filter), true) &&
+      words.reduce(
+        (state, filter) =>
+          state && name.toLowerCase().replace(/[\W]/, "").includes(filter),
+        true
+      )
   );
 };

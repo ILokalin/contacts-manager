@@ -72,7 +72,9 @@ export const deleteContact = (id) => {
   };
 };
 
-export const setFilter = (filterString) => ({
-  type: SET_FILTER,
-  payload: filterString,
-});
+export const setFilter = (filterString) => {
+  return {
+    type: SET_FILTER,
+    payload: filterString,
+  };
+};

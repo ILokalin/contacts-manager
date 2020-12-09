@@ -15,7 +15,7 @@ const Handler = {
   [SET_FILTER]: (state, payload) => ({
     ...state,
     filterString: payload,
-    filteredContacts: getFiltered(state.contacts, state.filterString),
+    filteredContacts: getFiltered(state.contacts, payload),
   }),
   [LOAD_CONTACTS_BY_USER]: (state, payload) => {
     const newContacts = sortContactsByName(payload);

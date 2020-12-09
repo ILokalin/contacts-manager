@@ -15,7 +15,7 @@ export const EditCard = ({ name, phone, id, userId, isCheck }) => {
     if (isCheck) {
       dispatch(
         putContact({
-          name: nameField.value,
+          name: nameField.value.trim(),
           phone: getDigitsOnly(phoneField.value),
           id,
           userId,

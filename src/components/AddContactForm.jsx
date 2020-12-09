@@ -25,7 +25,7 @@ export const AddContactForm = () => {
     name.setFocus();
     dispatch(
       postNewContact(userId, {
-        name: name.value,
+        name: name.value.trim(),
         phone: getDigitsOnly(phone.value),
       })
     );
