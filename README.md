@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Contact manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Демо: [доступно на heroku](https://contact-manager2020.herokuapp.com).
 
-## Available Scripts
+## Что делает приложение
+Состоит из двух страниц: страница входа/регистрации и страница с контактами пользователя, формой добавления новых контактов и строкой поиска:
+- форма регистрации имеет обязательные для заполнения поля: имя, электропочта, пароль, проверка пароля. Для пароля необходимо использовать один или более: латинский символ в нижнем регистре [a-z], латинский символ в верхнем регистре [A-Z], цифру [0-9], спецсимвол [!@#$%^&* и т.п.]. Минимальная длина пароля - 6 символов;
+- в форме входа, в качестве логина необходимо указать адрес электронной почты и пароль
+- после входа, на основной странице приложения размещен список контактов пользователя, форма для нового контакта, поле для поиска (открывается при нажатии иконки линзы), имя пользователя и кнопка для выхода из системы.
+- список контактов всегда отсортирован по алфавиту. Контакты можно редактировать и удалять. Добавляются контакты через форму.
 
-In the project directory, you can run:
+## Особенности
+Приложение имеет ряд особенностей, которые стоит отметить:
+- открытые, но не активные, вкладки прослушивают события login/logout и меняют свое состояние следом за активной вкладкой;
+- после работы в браузере сохраняется пользователь и при новом запуске авторизация произойдет автоматически. Хранение в localStorage;
+- поиск по списку производится с условием `И` - слова (как и числовые фразы) отделяются пробелом. Искать можно как по части номера телефона, так и/или по части имени;
+- формат записи телефона подбирается в соответствии с кодом страны - приложение отличает порядка 70 стран. Не вошедшие в базу отображаются в формате `+9 999 999 99999`;
+- достаточно большое число государств имеет нефиксированную длину номеров (10-12 знаков) - по этой причине в данной версии валидным считается номер после внесения 10 цифры;
+- для кнопок переключателей используется функция устранения дребезга (серии быстрых нажатий на мышку) - исключены дублирующее удаление элемента, дублирующая перезапись (кнопка сохранения доступна только после нового открытия формы редактирования);
+- проект содержит специальную утилиту для заполнения базы данных моковыми данными. При генерации данных создается три аккаунта. Логины: **test1@mail.ru, test2@mail.ru, test3@mail.ru**, пароли: **asd12A#**;
+
+
+
+## Как развернуть и запустить
+Получить проект на ПК одним из возможных способов, при помощи зеленой кнопки вверху справа: клонировать репозиторий или скачать. 
+
+Перед запуском скриптов получить необходимые пакеты командой:
+
+`npm i`
+
+Запустить проект в режиме разработки:
+
+`npm run dev`
+
+## Доступные скрипты
+
+
+### `npm run dev`
+Сборка приложения (серверной и клиентской части) в режиме разработчика. Клиент будет доступен по адресу: [http://localhost:3000](http://localhost:3000), сервер будет отвечать на порт 4000.
+
+### `npm run fill`
+Заполнение БД новыми моковыми данными. При заполнении будут созданы три аккаунта с логинами: **test1@mail.ru, test2@mail.ru, test3@mail.ru**, пароли: **asd12A#** - предназначены для тестирования работы приложения.
 
 ### `npm start`
+**Внимание! Скрипт отличается от стандартного!**
+Для успешного деплоя проекта на heroku скрипт был изменен. Не используйте его без подготовки сборки.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Запуск сервера в режиме production. Предварительно необходимо произвести сборку проекта командой `npm run build`.
+Приложение будет доступно по адресу: [http://localhost:4000](http://localhost:4000)
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Сборка клиентской части приложения в папку `build`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Инструменты
+Приложение использует ряд библиотек:
+- react - клиентская часть проекта;
+- redux, redux-thunk - менеджер состояний с поддержкой асинхронных экшенов;
+- json-server, express - управление БД и серверной частью приложения;
+- ряд дополнительных пакетов.
