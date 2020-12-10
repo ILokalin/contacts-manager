@@ -1,14 +1,12 @@
 export const Footer = () => {
   const style = {
     display: "flex",
-    flexGrow: 1,
-    alignItems: "flex-end",
     justifyContent: "center",
   };
 
   return (
-    <footer style={style} className="container pt-4">
-      <p className="text-center">
+    <footer style={style} className="container pt-2 mt-4 border-top">
+      <p className="text-center text-muted">
         <a href="https://github.com/ILokalin" rel="noreferrer" target="_blank">
           Ilya Lokalin.
         </a>
