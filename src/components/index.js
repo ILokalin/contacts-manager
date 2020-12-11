@@ -1,8 +1,10 @@
 export { AccountMenu } from "./AccountMenu.jsx";
+export { AddContactContainer } from "./AddContactContainer";
 export { AddContactForm } from "./AddContactForm";
 export { Alert } from "./Alert";
 export { ContactCard } from "./ContactCard";
 export { ContactsContainer } from "./ContactsContainer";
+export { ControlButtonContainer } from "./ControlButtonContainer";
 export { EditCard } from "./EditCard";
 export { Footer } from "./Footer";
 export { InfoCard } from "./InfoCard";
