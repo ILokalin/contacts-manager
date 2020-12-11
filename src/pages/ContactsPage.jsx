@@ -2,13 +2,13 @@ import { AddContactForm, ContactsContainer } from "components";
 
 export const ContactsPage = () => {
   return (
-    <div className="row flex-column-reverse flex-sm-column-reverse flex-md-row">
-      <div className="col-md-6 col-sm-12 pt-2 pt-md-5">
+    <div className="row flex-grow-1 flex-md-row-reverse">
+      <div className="col-sm-12 col-md-6 pt-5">
+        <AddContactForm />
+      </div>
+      <div className="col-sm-12 col-md-6 pt-2 pt-md-5">
         <h5 className="text-center text-muted">Your list</h5>
         <ContactsContainer />
-      </div>
-      <div className="col-md-6 col-sm-12 pt-5">
-        <AddContactForm />
       </div>
     </div>
   );

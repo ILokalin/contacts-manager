@@ -5,7 +5,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer style={style} className="container pt-4">
+    <footer style={style} className="container pt-2 mt-4 border-top">
       <p className="text-center text-muted">
         <a href="https://github.com/ILokalin" rel="noreferrer" target="_blank">
           Ilya Lokalin.

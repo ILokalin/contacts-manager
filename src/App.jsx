@@ -7,7 +7,7 @@ import { Alert, Footer, Navbar } from "components";
 import { setVisibility } from "utils/setVisibility";
 
 const style = {
-  height: "100vh",
+  minHeight: "100vh",
   display: "flex",
   flexDirection: "column",
   paddingTop: "30px",
