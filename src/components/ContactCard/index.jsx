@@ -1,61 +1,26 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/actions";
-import { useDebounce } from "hooks";
 import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils";
-import { PencilIcon, RemoveIcon, CheckIcon } from "icons";
-
-const HOLD = "HOLD";
-const LOCK = "LOCK";
-const style = {
-  button: {
-    padding: 0,
-    outline: "none",
-    boxShadow: "none",
-  },
-};
+import { ControlButtonContainer } from "components/ControlButtonContainer";
 
 export const ContactCard = (props) => {
-  const dispatch = useDispatch();
-  const debounce = useDebounce();
-  const debounceHold = useDebounce(HOLD);
-  const debounceLock = useDebounce(LOCK);
-
   const [isEdit, setIsEdit] = useState(false);
   const [isCheck, setIsCheck] = useState(false);
 
-  useEffect(() => {
-    if (isCheck) {
-      setIsEdit(false);
-      setIsCheck(false);
-    }
-  }, [isCheck]);
+  // useEffect(() => {
+  //   if (isCheck) {
+  //     setIsEdit(false);
+  //     setIsCheck(false);
+  //   }
+  // }, [isCheck]);
 
-  useEffect(() => {
-    if (!isEdit) {
-      debounceLock.unlock();
-    }
-    // eslint-disable-next-line
-  }, [isEdit]);
-
-  const onEditButtonClick = () => {
-    if (debounce.status) {
-      setIsEdit((prev) => !prev);
-    }
-  };
-
-  const onRemoveButtonClick = () => {
-    if (debounceHold.status) {
-      dispatch(deleteContact(props.id));
-    }
-  };
-
-  const onCheckButtonClick = () => {
-    if (debounceLock.status) {
-      setIsCheck(true);
-    }
-  };
+  // const onCheckButtonClick = () => {
+  //   if (debounceLock.status) {
+  //     setIsCheck(true);
+  //   }
+  // };
 
   return (
     <div className="d-flex justify-content-between">
@@ -67,14 +32,15 @@ export const ContactCard = (props) => {
         )}
       </div>
       <div>
-        <button
+        <ControlButtonContainer id={props.id} />
+        {/* <button
           style={style.button}
           className="btn btn-sm text-muted mr-2 edit-button"
           onClick={onEditButtonClick}
         >
           <PencilIcon />
-        </button>
-        {setVisibility(
+        </button> */}
+        {/* {setVisibility(
           isEdit,
           <button
             style={style.button}
@@ -91,7 +57,7 @@ export const ContactCard = (props) => {
           >
             <RemoveIcon />
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );
