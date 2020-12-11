@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteContact, toggleEdit } from "redux/actions";
 import { CheckIcon, RemoveIcon, DotsIcon } from "icons";
 import { setVisibility } from "utils";
 import { useDebounce } from "hooks";
@@ -8,24 +8,25 @@ import { useDebounce } from "hooks";
 const HOLD = "HOLD";
 const LOCK = "LOCK";
 
-export const ControlButtonContainer = ({ id }) => {
+export const ControlButtonContainer = (props) => {
   const dispatch = useDispatch();
   const debounce = useDebounce();
   const debounceHold = useDebounce(HOLD);
   const debounceLock = useDebounce(LOCK);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const { isEdit, id } = useSelector(({ contact }) => contact);
+  const isCurrent = id === props.id;
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!isEdit && isCurrent) {
       debounceLock.unlock();
     }
     // eslint-disable-next-line
-  }, [isOpen]);
+  }, [isEdit]);
 
   const onMenuButtonClick = () => {
     if (debounce.status) {
-      setIsOpen((prev) => !prev);
+      dispatch(toggleEdit(props.id));
     }
   };
 
@@ -38,7 +39,7 @@ export const ControlButtonContainer = ({ id }) => {
   return (
     <div className="d-flex justify-content-between">
       {setVisibility(
-        isOpen,
+        isEdit,
         <div className="d-flex justify-content-between">
           <button className="btn btn-sm text-success shadow-none">
             <CheckIcon />
@@ -52,7 +53,7 @@ export const ControlButtonContainer = ({ id }) => {
         </div>
       )}
       <button onClick={onMenuButtonClick} className="btn btn-sm shadow-none">
-        <DotsIcon isRotate={isOpen} />
+        <DotsIcon isRotate={isEdit} />
       </button>
     </div>
   );

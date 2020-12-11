@@ -1,20 +1,24 @@
+const StyleSelector = new Map([
+  [false, { properties: { transition: "0.4s" }, class: "text-secondary" }],
+  [
+    true,
+    {
+      properties: { transform: "rotate(90deg)", transition: "0.4s" },
+      class: "text-primary",
+    },
+  ],
+]);
+
 export const SearchIcon = ({ isRotate }) => {
-  const style = {
-    base: {
-      transition: "0.4s",
-    },
-    rotate: {
-      transform: "rotate(90deg)",
-      transition: "0.4s",
-    },
-  };
+  const style = StyleSelector.get(isRotate);
+
   return (
     <svg
-      style={isRotate ? style.rotate : style.base}
+      style={style.properties}
       width="1em"
       height="1em"
       viewBox="0 0 16 16"
-      className="bi bi-search text-secondary"
+      className={`bi bi-search ${style.class}`}
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >

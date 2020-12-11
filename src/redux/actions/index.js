@@ -14,3 +14,4 @@ export {
   putContact,
   deleteContact,
 } from "./http.action";
+export { toggleEdit } from "./contactAction.js";
