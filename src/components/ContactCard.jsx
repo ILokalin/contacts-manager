@@ -1,35 +1,35 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { InfoCard, EditCard } from "components";
 import { setVisibility } from "utils";
-import { ControlButtonContainer } from "components/ControlButtonContainer";
+import { ChevronUpIcon, DotsVerticalIcon } from "icons";
+import { useDebounce } from "hooks";
+import { toggleEdit } from "redux/actions";
 
 export const ContactCard = (props) => {
+  const dispatch = useDispatch();
   const { isEdit, id } = useSelector(({ contact }) => contact);
+  const debounce = useDebounce();
+  const isOpen = isEdit && props.id === id;
 
-  // useEffect(() => {
-  //   if (isCheck) {
-  //     setIsEdit(false);
-  //     setIsCheck(false);
-  //   }
-  // }, [isCheck]);
-
-  // const onCheckButtonClick = () => {
-  //   if (debounceLock.status) {
-  //     setIsCheck(true);
-  //   }
-  // };
+  const onMenuButtonClick = () => {
+    if (debounce.status) {
+      dispatch(toggleEdit(props.id));
+    }
+  };
 
   return (
     <div className="d-flex justify-content-between">
-      <div>
+      <div className="mr-2 flex-grow-1">
         {setVisibility(
-          isEdit && props.id === id,
+          isOpen,
           <EditCard {...props} />,
           <InfoCard {...props} />
         )}
       </div>
       <div>
-        <ControlButtonContainer id={props.id} />
+        <button onClick={onMenuButtonClick} className="btn btn-sm shadow-none">
+          {setVisibility(isOpen, <ChevronUpIcon />, <DotsVerticalIcon />)}
+        </button>
       </div>
     </div>
   );

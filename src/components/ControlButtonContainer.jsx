@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact, toggleEdit } from "redux/actions";
-import { CheckIcon, RemoveIcon, DotsIcon } from "icons";
-import { setVisibility } from "utils";
 import { useDebounce } from "hooks";
 
 const HOLD = "HOLD";
@@ -10,50 +8,40 @@ const LOCK = "LOCK";
 
 export const ControlButtonContainer = (props) => {
   const dispatch = useDispatch();
-  const debounce = useDebounce();
   const debounceHold = useDebounce(HOLD);
   const debounceLock = useDebounce(LOCK);
 
   const { isEdit, id } = useSelector(({ contact }) => contact);
-  const isCurrent = id === props.id;
+  const isOpen = isEdit && id === props.id;
 
   useEffect(() => {
-    if (!isEdit && isCurrent) {
+    if (isOpen) {
       debounceLock.unlock();
     }
     // eslint-disable-next-line
-  }, [isEdit]);
-
-  const onMenuButtonClick = () => {
-    if (debounce.status) {
-      dispatch(toggleEdit(props.id));
-    }
-  };
+  }, [isOpen]);
 
   const onRemoveButtonClick = () => {
     if (debounceHold.status) {
+      dispatch(toggleEdit());
       dispatch(deleteContact(id));
     }
   };
 
   return (
     <div className="d-flex justify-content-between">
-      {setVisibility(
-        isEdit,
-        <div className="d-flex justify-content-between">
-          <button className="btn btn-sm text-success shadow-none">
-            <CheckIcon />
-          </button>
-          <button
-            onClick={onRemoveButtonClick}
-            className="btn btn-sm text-danger shadow-none"
-          >
-            <RemoveIcon />
-          </button>
-        </div>
-      )}
-      <button onClick={onMenuButtonClick} className="btn btn-sm shadow-none">
-        <DotsIcon isRotate={isEdit} />
+      <button
+        onClick={onRemoveButtonClick}
+        className="btn btn-link btn-sm px-0 text-danger shadow-none"
+      >
+        Remove
+      </button>
+      <button
+        form={`form-${props.id}`}
+        type="submit"
+        className="btn btn-success btn-sm shadow-none"
+      >
+        Confirm
       </button>
     </div>
   );

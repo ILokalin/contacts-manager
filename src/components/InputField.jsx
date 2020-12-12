@@ -14,13 +14,14 @@ export const InputField = (props) => {
     label,
     refer,
     placeholder,
+    className = "",
     value = "",
     isSearchMod = false,
   } = props;
 
   return (
     <div
-      className={`form-group${isSearchMod ? " mb-0" : ""}`}
+      className={`form-group${isSearchMod ? " mb-0" : ""} ${className}`}
       style={isSearchMod ? style.container : null}
     >
       {setVisibility(label, <label htmlFor={`${name}-ID`}>{label}</label>)}
