@@ -19,15 +19,13 @@ const createCountMessage = (digitsLength, limitLength) =>
 export const phoneValidity = ({ target, nativeEvent }) => {
   let { selectionStart, value } = target;
   const { length } = value;
-  const { defaultValue } = nativeEvent.target;
   const isDeletedContent = nativeEvent.inputType === DELETE_CONTENT_EVENT;
   const isNothingSelected = selectionStart === target.selectionEnd;
   // eslint-disable-next-line no-useless-escape
   const isLeftCharsContain = /[^\+^0-9^\-^\(^\)^\s]/g.test(value);
-  let validityMessage = "";
 
   if (isDeletedContent && isNothingSelected) {
-    if (!/[0-9]/.test(defaultValue[selectionStart])) {
+    if (!/[0-9]/.test(target.defaultValue[selectionStart])) {
       [value, selectionStart] = deletePreviousDigit(value, selectionStart);
     }
   }
@@ -38,6 +36,7 @@ export const phoneValidity = ({ target, nativeEvent }) => {
 
   const isDigitsIncomplite = digitsLength < MIN_DIGITS_LENGTH;
 
+  let validityMessage = "";
   switch (true) {
     case isLeftCharsContain:
       validityMessage = "Formated input. Use 0-9 digits only.";
