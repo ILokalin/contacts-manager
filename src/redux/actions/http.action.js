@@ -4,6 +4,7 @@ import {
   SET_FILTER,
   REMOVE_CONTACT,
 } from "redux/types";
+import { unlockEdit } from "redux/actions";
 import { POST, GET, PUT, DELETE, http } from "utils/http";
 import { isActionSuccess } from "utils";
 
@@ -26,6 +27,7 @@ export const loadContactById = (id) => {
     const response = await http(`contacts/${id}`, GET);
 
     if (isActionSuccess(response, dispatch)) {
+      dispatch(unlockEdit(id));
       dispatch({
         type: LOAD_CONTACT_BY_ID,
         payload: response.data,

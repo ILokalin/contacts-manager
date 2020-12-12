@@ -7,9 +7,9 @@ import { toggleEdit } from "redux/actions";
 
 export const ContactCard = (props) => {
   const dispatch = useDispatch();
-  const { isEdit, id } = useSelector(({ contact }) => contact);
+  const { isEdit, id, isHold } = useSelector(({ contact }) => contact);
   const debounce = useDebounce();
-  const isOpen = isEdit && props.id === id;
+  const isOpen = isEdit && props.id === id && !isHold;
 
   const onMenuButtonClick = () => {
     if (debounce.status) {

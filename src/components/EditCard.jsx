@@ -2,14 +2,14 @@ import { useDispatch } from "react-redux";
 import { putContact, toggleEdit } from "redux/actions";
 import { useInput } from "hooks";
 import { InputField } from "components";
-import { formatPhoneString } from "utils/formatPhoneString";
+import { getFormatedNumber } from "utils/phoneTools";
 import { getDigitsOnly } from "utils/phoneTools";
 import { ControlButtonContainer } from "components";
 
 export const EditCard = ({ name, phone, id, userId, isCheck }) => {
   const dispatch = useDispatch();
-  const nameField = useInput(name);
-  const phoneField = useInput(formatPhoneString(phone));
+  const nameField = useInput(name, true);
+  const phoneField = useInput(getFormatedNumber(phone), true);
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
@@ -24,6 +24,7 @@ export const EditCard = ({ name, phone, id, userId, isCheck }) => {
     );
   };
 
+  const isValidity = nameField.isValidity && phoneField.isValidity;
   return (
     <>
       <form
@@ -46,7 +47,7 @@ export const EditCard = ({ name, phone, id, userId, isCheck }) => {
           {...phoneField}
         />
       </form>
-      <ControlButtonContainer id={id} />
+      <ControlButtonContainer id={id} isValidity={isValidity} />
     </>
   );
 };
