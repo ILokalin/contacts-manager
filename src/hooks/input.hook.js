@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { validity } from "utils/validity";
 
-export const useInput = (initialValue) => {
+export const useInput = (initialValue, validityInit = false) => {
   const [inputField, setInputField] = useState({
     value: initialValue,
-    isValidity: false,
+    isValidity: validityInit,
   });
   const { value, isValidity } = inputField;
   const [action, setAction] = useState({});
