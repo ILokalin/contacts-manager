@@ -39,7 +39,7 @@ export const SearchForm = () => {
         <InputField
           name="search"
           type="search"
-          isSearchMod={true}
+          className="mb-0 flex-grow-1"
           refer={search.refer}
           value={search.value}
           onInputChange={onSearchChange}
