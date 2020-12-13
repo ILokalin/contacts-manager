@@ -1,4 +1,5 @@
-export { useDebounce } from "./debounce.hook";
-export { useInput } from "./input.hook";
-export { useRoutes } from "./routes.hook";
+export { useActivity } from "./actitvity";
+export { useDebounce } from "./debounce";
+export { useInput } from "./input";
+export { useRoutes } from "./routes";
 export { useStorage } from "./storage";

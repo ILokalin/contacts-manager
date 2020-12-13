@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userLogin } from "redux/actions";
-import { useRoutes, useStorage } from "hooks";
+import { useRoutes, useStorage, useActivity } from "hooks";
 import { Alert, Footer, Navbar } from "components";
 import { setVisibility } from "utils/setVisibility";
 
@@ -21,6 +21,7 @@ export function App() {
   ]);
   const routes = useRoutes(isAuthenticated);
   const [userId, setUserId] = useStorage("");
+  const isActivity = useActivity();
   const [isAlert, alertMessage] = useSelector(({ alert }) => [
     alert.isShow,
     alert.message,
@@ -32,11 +33,11 @@ export function App() {
   }, [id]);
 
   useEffect(() => {
-    if (userId !== id) {
+    if (isActivity && userId !== id) {
       dispatch(userLogin(userId));
     }
     // eslint-disable-next-line
-  }, [userId]);
+  }, [isActivity, userId]);
 
   return (
     <>

@@ -2,16 +2,20 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadContactsByUser } from "redux/actions";
 import { ContactCard } from "components";
+import { useActivity } from "hooks";
 
 export const ContactsContainer = () => {
   const dispatch = useDispatch();
   const userId = useSelector(({ auth }) => auth.id);
   const filteredContacts = useSelector(({ http }) => http.filteredContacts);
+  const isActivity = useActivity();
 
   useEffect(() => {
-    dispatch(loadContactsByUser(userId));
+    if (isActivity) {
+      dispatch(loadContactsByUser(userId));
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [isActivity]);
 
   return (
     <ul
