@@ -46,31 +46,31 @@ export const RegisterForm = () => {
       <InputField name="name" type="text" label="Username" {...name} />
       <InputField name="login" type="email" label="Email address" {...login} />
       <InputField
-        name="password"
-        type="password"
         label="Password"
-        value={password.value}
+        name="password"
         onInputChange={onPasswordChange}
+        type="password"
+        value={password.value}
       />
       <InputField
-        name="passwordCheck"
-        type="password"
         label="Repeate password"
-        placeholder="Please input same password"
-        value={passwordCheck.value}
+        name="passwordCheck"
         onInputChange={onPasswordCheckChange}
+        placeholder="Please input same password"
+        type="password"
+        value={passwordCheck.value}
       />
       <button
-        type="button"
         className="btn btn-link pl-0"
         onClick={onMemberBtnClick}
+        type="button"
       >
         Do you have login?
       </button>
       <button
-        type="submit"
         className="btn btn-primary float-right"
         disabled={!isValidity}
+        type="submit"
       >
         Register
       </button>

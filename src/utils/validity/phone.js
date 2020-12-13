@@ -35,7 +35,6 @@ export const phoneValidity = ({ target, nativeEvent }) => {
   value = getFormatedNumber(digitsFromValue);
 
   const isDigitsIncomplite = digitsLength < MIN_DIGITS_LENGTH;
-
   let validityMessage = "";
   switch (true) {
     case isLeftCharsContain:

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadContactsByUser } from "redux/actions";
-import { ContactCard } from "components";
 import { useActivity } from "hooks";
+import { ContactCard } from "components";
 
 export const ContactsContainer = () => {
   const dispatch = useDispatch();

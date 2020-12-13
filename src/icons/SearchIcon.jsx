@@ -1,4 +1,4 @@
-const StyleSelector = new Map([
+const styleSelector = new Map([
   [false, { properties: { transition: "0.4s" }, class: "text-secondary" }],
   [
     true,
@@ -10,7 +10,7 @@ const StyleSelector = new Map([
 ]);
 
 export const SearchIcon = ({ isRotate }) => {
-  const style = StyleSelector.get(isRotate);
+  const style = styleSelector.get(isRotate);
 
   return (
     <svg

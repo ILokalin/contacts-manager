@@ -24,37 +24,36 @@ export const LoginForm = () => {
   };
 
   const isValidity = login.isValidity && password.isValidity;
-
   return (
     <form onSubmit={onFormSubmit}>
       <h3 className="text-center">Contacts Manager</h3>
       <InputField
-        name="login"
-        type="email"
         label="Email address"
+        name="login"
         placeholder="Use email for login"
         refer={login.refer}
+        type="email"
         {...login}
       />
       <InputField
-        name="password"
-        type="password"
         label="Password"
+        name="password"
         refer={password.refer}
+        type="password"
         {...password}
       />
       <button
-        type="button"
         className="btn btn-link pl-0"
-        value={password.value}
         onClick={onRegisterBtnClick}
+        type="button"
+        value={password.value}
       >
         Don't have login?
       </button>
       <button
-        type="submit"
         className="btn btn-primary float-right"
         disabled={!isValidity}
+        type="submit"
       >
         Login
       </button>

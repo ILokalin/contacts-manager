@@ -1,2 +1,2 @@
-export { getFormatedNumber } from "./getFormatedNumber";
 export { getDigitsOnly } from "./getDigitsOnly";
+export { getFormatedNumber } from "./getFormatedNumber";

@@ -1,13 +1,13 @@
 import {
-  TO_REGISTRATION,
-  TO_LOGIN,
   GET_AUTHENTICATE,
+  TO_LOGIN,
+  TO_REGISTRATION,
   USER_LOGIN,
   USER_LOGOUT,
   USER_REGISTER,
 } from "redux/types";
 
-const Handler = {
+const handler = {
   [GET_AUTHENTICATE]: (state, { name, id }) => ({
     ...state,
     isAuthenticated: true,
@@ -42,6 +42,6 @@ const initialState = {
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
-  const handle = Handler[type] || Handler.DEFAULT;
+  const handle = handler[type] || handler.DEFAULT;
   return handle(state, payload);
 };

@@ -1,6 +1,6 @@
 import { TOGGLE_EDIT, UNLOCK_EDIT } from "redux/types";
 
-const Handler = {
+const handler = {
   [TOGGLE_EDIT]: (state, payload) => {
     const id = payload ? payload : state.id;
     const isHold = !payload || (payload === state.id && state.isHold);
@@ -26,6 +26,6 @@ const initialize = {
 };
 
 export const contactReducer = (state = initialize, { type, payload }) => {
-  const handle = Handler[type] || Handler["DEFAULT"];
+  const handle = handler[type] || handler["DEFAULT"];
   return handle(state, payload);
 };

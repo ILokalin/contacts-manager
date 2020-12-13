@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { InfoCard, EditCard } from "components";
-import { setVisibility } from "utils";
-import { ChevronUpIcon, DotsVerticalIcon } from "icons";
-import { useDebounce } from "hooks";
 import { toggleEdit } from "redux/actions";
+import { useDebounce } from "hooks";
+import { InfoCard, EditCard } from "components";
+import { ChevronUpIcon, DotsVerticalIcon } from "icons";
+import { setVisibility } from "utils";
 
 export const ContactCard = (props) => {
   const dispatch = useDispatch();

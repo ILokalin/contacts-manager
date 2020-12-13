@@ -6,18 +6,6 @@ import { InputField } from "components";
 import { SearchIcon } from "icons";
 import { setVisibility } from "utils";
 
-const style = {
-  form: {
-    display: "inline-flex",
-    justifyContent: "flex-end",
-    flexGrow: 1,
-  },
-  button: {
-    outline: "none",
-    boxShadow: "none",
-  },
-};
-
 export const SearchForm = () => {
   const dispatch = useDispatch();
   const search = useInput("");
@@ -33,21 +21,20 @@ export const SearchForm = () => {
   };
 
   return (
-    <div style={style.form}>
+    <div className="d-inline-flex justify-content-end flex-grow-1">
       {setVisibility(
         isSearchLine,
         <InputField
-          name="search"
-          type="search"
           className="mb-0 flex-grow-1"
-          refer={search.refer}
-          value={search.value}
+          name="search"
           onInputChange={onSearchChange}
+          refer={search.refer}
+          type="search"
+          value={search.value}
         />
       )}
       <button
-        className="btn text-secondary"
-        style={style.button}
+        className="btn text-secondary shadow-none"
         onClick={onSearchButtonClick}
       >
         <SearchIcon isRotate={isSearchLine} />

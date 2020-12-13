@@ -28,11 +28,11 @@ export const Alert = ({ message }) => {
       <strong>Warning!</strong>
       &nbsp;{message}
       <button
-        type="button"
+        aria-label="Close"
         className="close"
         data-dismiss="alert"
-        aria-label="Close"
         onClick={onCloseButtonClick}
+        type="button"
       >
         <span aria-hidden="true">&times;</span>
       </button>

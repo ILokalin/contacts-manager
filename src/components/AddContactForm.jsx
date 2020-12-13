@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { postNewContact } from "redux/actions";
 import { useInput } from "hooks";
 import { InputField } from "components/InputField";
-import { postNewContact } from "redux/actions";
 import { getDigitsOnly } from "utils/phoneTools";
 
 const PHONE_PLACEHOLDER = 'Use international format with "+"';
@@ -40,16 +40,16 @@ export const AddContactForm = () => {
     <form onSubmit={onFormSubmit}>
       <InputField name="name" type="text" label="Name" {...name} />
       <InputField
-        name="phone"
-        type="tel"
         label="Phone"
+        name="phone"
         placeholder={PHONE_PLACEHOLDER}
+        type="tel"
         {...phone}
       />
       <button
-        type="submit"
         className="btn btn-primary float-right"
         disabled={!isValidity}
+        type="submit"
       >
         Add
       </button>

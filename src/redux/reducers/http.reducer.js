@@ -11,7 +11,7 @@ import {
   sortContactsByName,
 } from "utils/arrayTools";
 
-const Handler = {
+const handler = {
   [SET_FILTER]: (state, payload) => ({
     ...state,
     filterString: payload,
@@ -53,6 +53,6 @@ const initialState = {
 };
 
 export const httpReducer = (state = initialState, { type, payload }) => {
-  const handle = Handler[type] || Handler.DEFAULT;
+  const handle = handler[type] || handler.DEFAULT;
   return handle(state, payload);
 };

@@ -1,4 +1,4 @@
-export { showAlert, removeAlert } from "./alert.action";
+export { showAlert, removeAlert } from "./alertActions";
 export {
   turnToRegistration,
   turnToLogin,
@@ -6,12 +6,12 @@ export {
   userLogin,
   userLogout,
   userRegister,
-} from "./auth.action";
+} from "./authActions";
 export {
   loadContactsByUser,
   postNewContact,
   setFilter,
   putContact,
   deleteContact,
-} from "./http.action";
-export { toggleEdit, unlockEdit } from "./contactAction.js";
+} from "./httpActions";
+export { toggleEdit, unlockEdit } from "./contactActions.js";

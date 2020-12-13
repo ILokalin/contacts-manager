@@ -17,16 +17,16 @@ export const ControlButtonContainer = (props) => {
   return (
     <div className="d-flex justify-content-between">
       <button
-        onClick={onRemoveButtonClick}
         className="btn btn-link btn-sm px-0 text-danger shadow-none"
+        onClick={onRemoveButtonClick}
       >
         Remove
       </button>
       <button
+        className="btn btn-success btn-sm shadow-none"
+        disabled={!props.isValidity}
         form={`form-${props.id}`}
         type="submit"
-        disabled={!props.isValidity}
-        className="btn btn-success btn-sm shadow-none"
       >
         Confirm
       </button>

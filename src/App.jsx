@@ -8,8 +8,6 @@ import { setVisibility } from "utils/setVisibility";
 
 const style = {
   minHeight: "100vh",
-  display: "flex",
-  flexDirection: "column",
   paddingTop: "30px",
 };
 
@@ -42,7 +40,7 @@ export function App() {
   return (
     <>
       {setVisibility(isAuthenticated, <Navbar />)}
-      <div className="container" style={style}>
+      <div className="d-flex flex-column container" style={style}>
         {setVisibility(isAlert, <Alert message={alertMessage} />)}
         <Router>{routes}</Router>
         <Footer />

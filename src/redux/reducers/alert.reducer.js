@@ -1,6 +1,6 @@
 import { SHOW_ALERT, REMOVE_ALERT } from "redux/types";
 
-const Handler = {
+const handler = {
   [SHOW_ALERT]: (state, payload) => ({
     ...state,
     isShow: true,
@@ -16,6 +16,6 @@ const initialState = {
 };
 
 export const alertReducer = (state = initialState, { type, payload }) => {
-  const handle = Handler[type] || Handler.DEFAULT;
+  const handle = handler[type] || handler.DEFAULT;
   return handle(state, payload);
 };

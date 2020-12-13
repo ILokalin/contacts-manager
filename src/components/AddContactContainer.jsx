@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { setVisibility } from "utils";
 import { AddContactForm } from "components";
+import { setVisibility } from "utils";
 
-const ButtonSelector = new Map([
+const buttonSelector = new Map([
   [false, { name: "New Contact", class: "btn-success" }],
   [true, { name: "Close", class: "btn-outline-secondary" }],
 ]);
@@ -19,10 +19,10 @@ export const AddContactContainer = () => {
       <div className="d-block d-md-none">
         {setVisibility(isAddFormShow, <AddContactForm />)}
         <button
-          className={`btn ${ButtonSelector.get(isAddFormShow).class}`}
+          className={`btn ${buttonSelector.get(isAddFormShow).class}`}
           onClick={onNewContactButtonClick}
         >
-          {ButtonSelector.get(isAddFormShow).name}
+          {buttonSelector.get(isAddFormShow).name}
         </button>
       </div>
       <div className="d-none d-md-block">

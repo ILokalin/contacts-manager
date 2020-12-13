@@ -1,8 +1,8 @@
 import {
   LOAD_CONTACTS_BY_USER,
   LOAD_CONTACT_BY_ID,
-  SET_FILTER,
   REMOVE_CONTACT,
+  SET_FILTER,
 } from "redux/types";
 import { unlockEdit } from "redux/actions";
 import { POST, GET, PUT, DELETE, http } from "utils/http";

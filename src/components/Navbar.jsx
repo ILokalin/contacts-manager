@@ -6,10 +6,10 @@ import { AccountIcon } from "icons";
 const style = {
   navbar: {
     position: "fixed",
-    zIndex: 1000,
-    left: 0,
     right: 0,
+    left: 0,
     boxShadow: "0px 1px 13px 0px rgba(50, 50, 50, 0.4)",
+    zIndex: 1000,
   },
 };
 

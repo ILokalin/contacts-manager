@@ -5,14 +5,8 @@ const DEBOUNCE_INTERVAL = 500;
 export const useDebounce = (mod) => {
   const [debounce, setDebounce] = useState(true);
 
-  const unlock = () => {
-    if (mod !== "HOLD") {
-      setDebounce(true);
-    }
-  };
-
   const checkStatus = () => {
-    if (mod === "HOLD" || mod === "LOCK") {
+    if (mod === "HOLD") {
       if (debounce) {
         setDebounce(false);
         return true;
@@ -38,6 +32,5 @@ export const useDebounce = (mod) => {
     get status() {
       return checkStatus();
     },
-    unlock,
   };
 };

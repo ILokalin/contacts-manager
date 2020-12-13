@@ -1,11 +1,11 @@
 import {
-  TO_REGISTRATION,
+  GET_AUTHENTICATE,
   TO_LOGIN,
+  TO_REGISTRATION,
   USER_LOGIN,
   USER_LOGOUT,
-  GET_AUTHENTICATE,
 } from "redux/types";
-import { showAlert } from "./alert.action";
+import { showAlert } from "redux/actions";
 import { POST, GET, http } from "utils/http";
 import { throwError, isActionSuccess } from "utils";
 

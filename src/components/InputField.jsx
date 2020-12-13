@@ -2,13 +2,13 @@ import { setVisibility } from "utils";
 
 export const InputField = (props) => {
   const {
-    onInputChange,
-    name,
-    type,
-    label,
-    refer,
-    placeholder,
     className = "",
+    label,
+    name,
+    onInputChange,
+    placeholder,
+    refer,
+    type,
     value = "",
   } = props;
 
@@ -16,9 +16,9 @@ export const InputField = (props) => {
     <div className={`form-group ${className}`}>
       {setVisibility(label, <label htmlFor={`${name}-ID`}>{label}</label>)}
       <input
+        autoComplete="new-password"
         className="form-control"
         id={`${name}-ID`}
-        autoComplete="new-password"
         onChange={onInputChange}
         ref={refer}
         {...{ type, name, value }}

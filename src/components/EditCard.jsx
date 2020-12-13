@@ -1,10 +1,8 @@
 import { useDispatch } from "react-redux";
 import { putContact, toggleEdit } from "redux/actions";
 import { useInput } from "hooks";
-import { InputField } from "components";
-import { getFormatedNumber } from "utils/phoneTools";
-import { getDigitsOnly } from "utils/phoneTools";
-import { ControlButtonContainer } from "components";
+import { InputField, ControlButtonContainer } from "components";
+import { getFormatedNumber, getDigitsOnly } from "utils/phoneTools";
 
 export const EditCard = ({ name, phone, id, userId, isCheck }) => {
   const dispatch = useDispatch();

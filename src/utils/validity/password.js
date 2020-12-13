@@ -1,22 +1,22 @@
-const IS_LONG = "PASSWORD/IS_LONG";
-const IS_SHORT = "PASSWORD/IS_SHORT";
-const IS_UPCASE = "PASSWORD/IS_UPCASE";
 const IS_DIGITS = "PASSWORD/IS_DIGITS";
+const IS_LONG = "PASSWORD/IS_LONG";
 const IS_LOWCASE = "PASSWORD/IS_LOWCASE";
-const IS_SPECIAL = "PASSWORD/IS_SPECIAL";
 const IS_NOT_EQUAL = "PASSWORD/IS_NOT_EQUAL";
+const IS_SHORT = "PASSWORD/IS_SHORT";
+const IS_SPECIAL = "PASSWORD/IS_SPECIAL";
+const IS_UPCASE = "PASSWORD/IS_UPCASE";
 const MIN_LENGHT = 6;
 const MAX_LENGTH = 16;
 
 const Messages = {
+  [IS_DIGITS]: () => "Requere use one or more digit 0-9.",
+  [IS_LONG]: () => `Password should not be longer than ${MAX_LENGTH} symbols.`,
+  [IS_LOWCASE]: () => "Requere use one or more lowcase characters a-z.",
+  [IS_NOT_EQUAL]: () => "Passowrds should be equals.",
   [IS_SHORT]: (length) =>
     `Add ${MIN_LENGHT - length} more symbols of password.`,
-  [IS_LONG]: () => `Password should not be longer than ${MAX_LENGTH} symbols.`,
-  [IS_UPCASE]: () => "Requere use one or more upcase characters A-Z.",
-  [IS_DIGITS]: () => "Requere use one or more digit 0-9.",
-  [IS_LOWCASE]: () => "Requere use one or more lowcase characters a-z.",
   [IS_SPECIAL]: () => "Use one or more special chars (#, @, %, ... etc)",
-  [IS_NOT_EQUAL]: () => "Passowrds should be equals.",
+  [IS_UPCASE]: () => "Requere use one or more upcase characters A-Z.",
   DEFAULT: () => "",
 };
 
